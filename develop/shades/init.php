@@ -20,6 +20,7 @@ $act3 = new action('act3');
 //--------------------------------------------------------------
 //CUERPO
 $shade->activateHeightUse();
+$shade->properties->title='Prueba de Diseño';
 
 $act1->properties->type=NORMAL;
 $act1->properties->caption='Formato 1';
