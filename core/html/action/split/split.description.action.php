@@ -1,0 +1,1 @@
+<small class="[[s_description]]"><br>[[property]]</small>

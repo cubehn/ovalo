@@ -1,0 +1,1 @@
+<div id="s[[id]]" class="[[s_subtitle]]">[[property]]</div>

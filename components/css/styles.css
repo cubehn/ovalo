@@ -1,0 +1,71 @@
+.personalize{
+	border: 1px solid blue;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	background-color: silver;
+}
+
+.flex-parent{
+  display: -ms-flex;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.flex-child{
+  display: -ms-flex;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.parallax-img{
+  min-height: 400px;
+  position: relative;
+  opacity: 0.65;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.parallax-head{
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  color: #000;
+}
+
+.hoverbtn:hover{
+  color: #FFF;
+  background-color: rgba(200, 200, 200, 0.3); 
+}
+.hoverbtn{
+  color: #000;
+  border: 1px solid transparent;
+  padding: .375rem;
+  background-color: RGB(248,249,250);
+}
+
+.card-flow {
+  position: fixed;
+  z-index: 1;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+
+}
+
+.btn-cust1 {
+  color: #212529;
+  background-color: #6890fa;
+  border-color: #f8f9fa;
+}

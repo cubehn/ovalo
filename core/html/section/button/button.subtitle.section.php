@@ -1,0 +1,1 @@
+<h6 class="[[s_subtitle]]" style="[[font_color_subtitle]]">[[property]]</h6>

@@ -1,0 +1,1 @@
+<h5 class="[[s_title]]" style="[[font_color_title]]">[[=DEBUG1]][[property]]</h5>

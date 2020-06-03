@@ -1,0 +1,40 @@
+/******************************************************
+	
+	ESPAÑOL
+	--------------------------------------------------
+	27/03/2020    Creado por CUBEHN
+
+
+
+
+
+
+******************************************************/
+
+	
+Begin line 20
+------------------------------------------------------
+
+
+
+No tiene asociado un type correcto.
+La propiedad Width del objeto es incorrecta, deben ser valores del 1 al 12.
+No existe la visualizacion indicada.
+La imagen no existe.
+No existe ninguna section asociada a este shade.
+Errores encontrados en tiempo de ejecución.
+Cerrar
+La propiedad Height del objeto es incorrecta, deben ser valores entre el 1 y el 12.
+El archivo del sistema no se encuentra
+El Section ya está incluido en otro lugar
+Objeto incorrecto, no es un Section
+Error interno, el tipo de propiedad del Section no existe (keys.php)
+Error interno, tipo de la propiedad del Section no definida (keys.php)
+No existe icono con ese nombre
+El valor permitido para un color es de 0 a 255
+El valor permitido para el Alpha de un color es de 0 a 1 (con decimales)
+El tipo de borde no existe
+El valor no es un hexadecimal valido
+Objeto incorrecto, no es un Action
+El color asignado para el "actions" es incorrecto
+El proceso no existe

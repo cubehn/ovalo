@@ -1,0 +1,1 @@
+<span class="[[s_style_button]]" style="[[header_justify]]">[[property]]</span>

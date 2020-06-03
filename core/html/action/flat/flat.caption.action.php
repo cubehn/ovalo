@@ -1,0 +1,1 @@
+<span class="dropdown-item-text">[[property]]</span>

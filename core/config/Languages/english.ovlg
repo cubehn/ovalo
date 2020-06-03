@@ -1,0 +1,35 @@
+/******************************************************
+	
+	ENGLISH
+	--------------------------------------------------
+	27/03/2020    Google Translate
+
+
+
+
+
+
+******************************************************/
+
+	
+Begin line 20
+------------------------------------------------------
+
+
+
+It does not have a correct type associated with it.
+The width property of the object is incorrect, they must be values from 1 to 12.
+The indicated display does not exist.
+The image does not exist.
+There is no section associated with this shade.
+Errors found at runtime.
+Close
+The object's Height property is incorrect, they must be values between 1 and 12.
+The system file is missing
+The Section is already included elsewhere
+Wrong object, not a Section
+Internal error, Section property type does not exist (keys.php)
+Internal error, undefined section property type (keys.php)
+There is no icon with that name
+The allowed value for a color is 0 to 255
+The allowed value for the Alpha of a color is from 0 to 1 (with decimals)

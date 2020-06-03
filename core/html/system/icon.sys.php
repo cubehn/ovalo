@@ -1,0 +1,1 @@
+<img src='[[icon]]' style="width: [[size]]px;height: [[size]]px" class='img-fluid'>

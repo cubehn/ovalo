@@ -1,0 +1,41 @@
+.ovalo-sections{
+	padding: 1px;
+}
+
+.section-normal{
+	border: 1px solid blue;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	background-color: silver;
+	margin: 5px; 
+	width: 7.0371%;
+	float:left;
+}
+.section-normal-height{
+	height: 150px;
+	overflow: auto;
+}
+
+.xmaincss{
+	width:100%;
+	margin: 0; 
+	padding: 0;
+}
+
+.ancho_1{
+	width: 6.1%;
+}
+.ancho_2{
+	width: 14.4%;
+}
+.ancho_3{
+	width: 22.7%;
+}
+.ancho_4{
+	width: 31%;
+}
+.ancho_5{
+	width: 47.5%;
+}
+.ancho_12{
+	width: 98%;
+}

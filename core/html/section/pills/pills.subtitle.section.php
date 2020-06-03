@@ -1,0 +1,1 @@
+<p class="[[s_subtitle]]" style="[[font_color_title]]">[[property]]</p>
