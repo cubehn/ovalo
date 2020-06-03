@@ -8,6 +8,6 @@
 use core\sentinel\sentinel;
 sentinel::add(__FILE__);
 
-$GLOBALS['Directory'] = 'OVDEV/ovalo';
+$GLOBALS['Directory'] = '/ovalo';
 
 ?>
