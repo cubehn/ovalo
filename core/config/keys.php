@@ -139,6 +139,7 @@ class keys{
 					['border_radius_header','h'],
 					['font_header','h'],
 					['font_size_header','h'],
+					['font_color_header','h'],
 					['shadow_header','h'],
 					['decoration_header','h'],
 					['decoration_header_color','h'],

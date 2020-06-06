@@ -3,7 +3,6 @@
 
 use core\kernel\ovalo;
 
-
 require __DIR__.'/../config/filesystem.php';
 require __DIR__.'/../../root.php';
 require __DIR__.'/../config/constants.php';

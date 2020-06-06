@@ -7,6 +7,58 @@ use ovalo\config\config;
 use core\sentinel\sentinel;
 sentinel::add(__FILE__);
 
+class color{
+	static function rgba($r=255,$g=255,$b=255,$a=1){
+		$color = ['type'=>'rgba','cr'=>$r,'cg'=>$g,'cb'=>$b,'ca'=>$a,'ch'=>'','cn'=>''];
+		return $color;
+	}
+	static function hexa($h='FFFFFF'){
+		$color = ['type'=>'hexa','cr'=>'','cg'=>'','cb'=>'','ca'=>'','ch'=>$h,'cn'=>''];
+		return $color;
+	}
+	static function name($n='white'){
+		$color = ['type'=>'name','cr'=>'','cg'=>'','cb'=>'','ca'=>'','ch'=>'','cn'=>$n];
+		return $color;
+	}
+	static function get($c){
+		$color='';
+		if(is_array($c))
+		{
+			if(isset($c['type']))
+			{
+				$type = $c['type'];	
+				switch($type)
+				{
+					case 'rgba':
+						$cr=$c['cr'];
+						$cg=$c['cg'];
+						$cb=$c['cb'];
+						$ca=$c['ca'];
+						$color="rgba($cr,$cg,$cb,$ca)";
+						break;
+					case 'name':
+						$cn=$c['cn'];
+						$color=$cn;
+						break;
+					case 'hexa':
+						$ch=$c['ch'];
+						$color="#$ch";
+						break;
+				}
+			}
+			else
+			{
+				//error, no es un color valido		
+			}
+		}
+		else
+		{
+			//error, no es un color valido
+		}
+		return $color;
+	}
+}
+
 class s_events{
 	private $events;
 
@@ -480,15 +532,6 @@ class istyle
 		$this->i_methods['shadow']['value']=$rt;
 		//$this->i_methods['shadow']='box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);';
 	}
-	function shadow_title($ins)
-	{
-		if($ins>10)$ins=10;
-		$ins = $ins/10;
-		$rt = '1px 1px 1px rgba(0, 0, 0, '.$ins.');';
-		$this->i_methods['shadow_title']['property']='textShadow';
-		$this->i_methods['shadow_title']['id']='IST005';
-		$this->i_methods['shadow_title']['value']=$rt;
-	}
 	function narrow()
 	{
 		$rt = '0';
@@ -517,6 +560,75 @@ class istyle
 		$this->i_methods['font_title']['value']=$c;
 		//$this->i_methods['font_title'] = 'font-family: '.$c.';';
 	}
+	function align_title($a)
+	{
+		$this->i_methods['align_title']['property']='align_title';
+		$this->i_methods['align_title']['id']='IST028';
+		$this->i_methods['align_title']['value']=$a;
+	}
+	function align_subtitle($a)
+	{
+		$this->i_methods['align_subtitle']['property']='align_subtitle';
+		$this->i_methods['align_subtitle']['id']='IST038';
+		$this->i_methods['align_subtitle']['value']=$a;
+	}
+	function decoration_title($a,$c='',$s='solid')
+	{
+		if($c=='') $c=color::name('black');
+		$color = color::get($c);
+		if($color=='')
+		{
+			//sentinel::registerER('decoration_title [color]',config::$parameters['Language'],22);
+			return '';
+		}
+		$this->i_methods['decoration_title']['property']='decoration_title';
+		$this->i_methods['decoration_title']['id']='IST029';
+		$this->i_methods['decoration_title']['value']=$a;
+		$this->i_methods['decoration_title_color']['property']='decoration_title_color';
+		$this->i_methods['decoration_title_color']['id']='IST030';
+		$this->i_methods['decoration_title_color']['value']=$color;
+		$this->i_methods['decoration_title_style']['property']='decoration_title_style';
+		$this->i_methods['decoration_title_style']['id']='IST031';
+		$this->i_methods['decoration_title_style']['value']=$s;
+	}
+	function decoration_subtitle($a,$c='',$s='solid')
+	{
+		if($c=='') $c=color::name('black');
+		$color = color::get($c);
+		if($color=='')
+		{
+			//sentinel::registerER('decoration_title [color]',config::$parameters['Language'],22);
+			return '';
+		}
+		$this->i_methods['decoration_subtitle']['property']='decoration_subtitle';
+		$this->i_methods['decoration_subtitle']['id']='IST032';
+		$this->i_methods['decoration_subtitle']['value']=$a;
+		$this->i_methods['decoration_subtitle_color']['property']='decoration_subtitle_color';
+		$this->i_methods['decoration_subtitle_color']['id']='IST033';
+		$this->i_methods['decoration_subtitle_color']['value']=$color;
+		$this->i_methods['decoration_subtitle_style']['property']='decoration_subtitle_style';
+		$this->i_methods['decoration_subtitle_style']['id']='IST034';
+		$this->i_methods['decoration_subtitle_style']['value']=$s;
+	}
+	function decoration_header($a,$c='',$s='solid')
+	{
+		if($c=='') $c=color::name('black');
+		$color = color::get($c);
+		if($color=='')
+		{
+			//sentinel::registerER('decoration_title [color]',config::$parameters['Language'],22);
+			return '';
+		}
+		$this->i_methods['decoration_header']['property']='decoration_header';
+		$this->i_methods['decoration_header']['id']='IST035';
+		$this->i_methods['decoration_header']['value']=$a;
+		$this->i_methods['decoration_header_color']['property']='decoration_subtitle_color';
+		$this->i_methods['decoration_header_color']['id']='IST036';
+		$this->i_methods['decoration_header_color']['value']=$color;
+		$this->i_methods['decoration_header_style']['property']='decoration_subtitle_style';
+		$this->i_methods['decoration_header_style']['id']='IST037';
+		$this->i_methods['decoration_header_style']['value']=$s;
+	}
 	function font_size_title($c)
 	{
 		$this->i_methods['font_size_title']['property']='font_size_title';
@@ -535,21 +647,122 @@ class istyle
 		$this->i_methods['font_size_subtitle']['property']='font_size_subtitle';
 		$this->i_methods['font_size_subtitle']['id']='IST013';
 		$this->i_methods['font_size_subtitle']['value']=$c.'pt';
+	}
+	function font_size_header($c)
+	{
+		$this->i_methods['font_size_header']['property']='font_size_header';
+		$this->i_methods['font_size_header']['id']='IST027';
+		$this->i_methods['font_size_header']['value']=$c.'pt';
+	}
 
-	}
-	function header_justify()
+	function justify_header()
 	{
-		$this->i_methods['header_justify']['property']='header_justify';
-		$this->i_methods['header_justify']['id']='IST014';
-		$this->i_methods['header_justify']['value']='';
+		$this->i_methods['justify_header']['property']='justify_header';
+		$this->i_methods['justify_header']['id']='IST014';
+		$this->i_methods['justify_header']['value']='';
 	}
-	function header_line($w,$c='black',$t='solid')
+	function line_header($w,$c='',$t='solid')
 	{
-		$rt = $w.'px '.$t.' '.$c;
-		$this->i_methods['header_line']['property']='header_line';
-		$this->i_methods['header_line']['id']='IST015';
-		$this->i_methods['header_line']['value']=$rt;
-		//$this->i_methods['header_line']='border-bottom:'.$w.'px '.$t.' '.$c.';';	
+		if($c=='') $c=color::name('black');
+		$color = color::get($c);
+		if($color=='')
+		{
+			//sentinel::registerER('line_header [color]',config::$parameters['Language'],22);
+			return '';
+		}
+		//if(!in_array($t,keys::$sectionsCommands['borderStyles']))
+		//{
+			//sentinel::registerER('line_header ['."$t".']',config::$parameters['Language'],17);
+			//return '';
+		//}
+		$rt = $w.'px '.$t.' '.$color;
+		$this->i_methods['line_header']['property']='line_header';
+		$this->i_methods['line_header']['id']='IST015';
+		$this->i_methods['line_header']['value']=$rt;
+	}
+	function font_color_subtitle($c)
+	{
+		$color = color::get($c);
+		if($color=='')
+		{
+			//sentinel::registerER('line_header [color]',config::$parameters['Language'],22);
+			return '';
+		}
+		$this->i_methods['font_color_subtitle']['property']='font_color_subtitle';
+		$this->i_methods['font_color_subtitle']['id']='IST025';
+		$this->i_methods['font_color_subtitle']['value']=$color;
+	}
+	function font_color_title($c)
+	{
+		$color = color::get($c);
+		if($color=='')
+		{
+			//sentinel::registerER('line_header [color]',config::$parameters['Language'],22);
+			return '';
+		}
+		$this->i_methods['font_color_title']['property']='font_color_title';
+		$this->i_methods['font_color_title']['id']='IST024';
+		$this->i_methods['font_color_title']['value']=$color;
+	}
+	function font_color_header($c)
+	{
+		$color = color::get($c);
+		if($color=='')
+		{
+			//sentinel::registerER('line_header [color]',config::$parameters['Language'],22);
+			return '';
+		}
+		$this->i_methods['font_color_header']['property']='font_color_header';
+		$this->i_methods['font_color_header']['id']='IST047';
+		$this->i_methods['font_color_header']['value']=$color;
+	}
+	function bg_color_header($c)
+	{
+		$color = color::get($c);
+		if($color=='')
+		{
+			//sentinel::registerER('line_header [color]',config::$parameters['Language'],22);
+			return '';
+		}
+		$this->i_methods['bg_color_header']['property']='bg_color_header';
+		$this->i_methods['bg_color_header']['id']='IST026';
+		$this->i_methods['bg_color_header']['value']=$color;
+	}
+	function bg_color_title($c)
+	{
+		$color = color::get($c);
+		if($color=='')
+		{
+			//sentinel::registerER('line_header [color]',config::$parameters['Language'],22);
+			return '';
+		}
+		$this->i_methods['bg_color_title']['property']='bg_color_title';
+		$this->i_methods['bg_color_title']['id']='IST040';
+		$this->i_methods['bg_color_title']['value']=$color;
+	}
+	function bg_color_subtitle($c)
+	{
+		$color = color::get($c);
+		if($color=='')
+		{
+			//sentinel::registerER('line_header [color]',config::$parameters['Language'],22);
+			return '';
+		}
+		$this->i_methods['bg_color_subtitle']['property']='bg_color_subtitle';
+		$this->i_methods['bg_color_subtitle']['id']='IST039';
+		$this->i_methods['bg_color_subtitle']['value']=$color;
+	}
+	function bg_color($c)
+	{
+		$color = color::get($c);
+		if($color=='')
+		{
+			//sentinel::registerER('line_header [color]',config::$parameters['Language'],22);
+			return '';
+		}
+		$this->i_methods['bg_color']['property']='bg_color';
+		$this->i_methods['bg_color']['id']='IST022';
+		$this->i_methods['bg_color']['value']=$color;
 	}
 	function narrow_footer()
 	{
@@ -564,13 +777,102 @@ class istyle
 		$this->i_methods['footer_line']['id']='IST017';
 		$this->i_methods['footer_line']['value']=$rt;
 	}
-
+	function bold_title($c)
+	{
+		if($c==1) $b='bold';
+		else $b='normal';
+		$this->i_methods['bold_title']['property']='bold_title';
+		$this->i_methods['bold_title']['id']='IST041';
+		$this->i_methods['bold_title']['value']=$b;
+	}
+	function bold_subtitle($c)
+	{
+		if($c==1) $b='bold';
+		else $b='normal';
+		$this->i_methods['bold_subtitle']['property']='bold_subtitle';
+		$this->i_methods['bold_subtitle']['id']='IST042';
+		$this->i_methods['bold_subtitle']['value']=$b;
+	}
+	function bold_header($c)
+	{
+		if($c==1) $b='bold';
+		else $b='normal';
+		$this->i_methods['bold_header']['property']='bold_header';
+		$this->i_methods['bold_header']['id']='IST043';
+		$this->i_methods['bold_header']['value']=$b;
+	}
 	function footer_justify()
 	{
 		$this->i_methods['footer_justify']['property']='footer_justify';
 		$this->i_methods['footer_justify']['id']='IST018';
 		$this->i_methods['footer_justify']['value']='';
 		//$this->i_methods['footer_justify']='display: flex;justify-content: space-between;';
+	}
+	function shadow_title($ins,$c='')
+	{
+		if($ins>10)$ins=10;
+		$ins = $ins/10;
+
+		if($c=='') $c=color::rgba(0,0,0,$ins);
+		$color = color::get($c);
+		if($color=='')
+		{
+			//sentinel::registerER('shadow_header [color]',config::$parameters['Language'],22);
+			return '';
+		}
+		if($c['type']!='rgba')
+		{
+			//sentinel::registerER('shadow_header [color]',config::$parameters['Language'],23);
+			return '';	
+		}
+		$rt = '1px 1px 1px '.$color.';';
+		$this->i_methods['shadow_title']['property']='shadow_title';
+		$this->i_methods['shadow_title']['id']='IST044';
+		$this->i_methods['shadow_title']['value']=$rt;
+	}
+	function shadow_subtitle($ins,$c='')
+	{
+		if($ins>10)$ins=10;
+		$ins = $ins/10;
+
+		if($c=='') $c=color::rgba(0,0,0,$ins);
+		$color = color::get($c);
+		if($color=='')
+		{
+			//sentinel::registerER('shadow_header [color]',config::$parameters['Language'],22);
+			return '';
+		}
+		if($c['type']!='rgba')
+		{
+			//sentinel::registerER('shadow_header [color]',config::$parameters['Language'],23);
+			return '';	
+		}
+		$rt = '1px 1px 1px '.$color.';';
+		$this->i_methods['shadow_subtitle']['property']='shadow_subtitle';
+		$this->i_methods['shadow_subtitle']['id']='IST045';
+		$this->i_methods['shadow_subtitle']['value']=$rt;
+	}
+	function shadow_header($ins,$c='')
+	{
+		if($ins>10)$ins=10;
+		$ins = $ins/10;
+
+		if($c=='') $c=color::rgba(0,0,0,$ins);
+		$color = color::get($c);
+		if($color=='')
+		{
+			//sentinel::registerER('shadow_header [color]',config::$parameters['Language'],22);
+			return '';
+		}
+		if($c['type']!='rgba')
+		{
+			//sentinel::registerER('shadow_header [color]',config::$parameters['Language'],23);
+			return '';	
+		}
+		$rt = '1px 1px 1px '.$color.';';
+		$this->i_methods['shadow_header']['property']='shadow_header';
+		$this->i_methods['shadow_header']['id']='IST046';
+		$this->i_methods['shadow_header']['value']=$rt;
 	}
 	function border_radius($v,$ia=1,$da=1,$ib=1,$db=1)
 	{
@@ -653,22 +955,6 @@ class istyle
 			$this->footer_background_color($color);
 		}
 	}
-	function bg_color_RGBA($r,$g,$b,$a=1)
-	{
-		$color = $this->validateColorRGBA($r,$g,$b,$a,'bg_color_RGBA');
-		if($color!='')
-		{
-			$this->bg_color($color);
-		}
-	}
-	function bg_color_HEX($c)
-	{
-		$color = $this->validateColorHEX($c,'bg_color_HEX');
-		if($color!='')
-		{
-			$this->bg_color($color);
-		}
-	}
 	function font_color_RGBA($r,$g,$b,$a=1)
 	{
 		$color = $this->validateColorRGBA($r,$g,$b,$a,'font_color_RGBA');
@@ -685,54 +971,7 @@ class istyle
 			$this->font_color($color);
 		}
 	}
-	function font_color_title_RGBA($r,$g,$b,$a=1)
-	{
-		$color = $this->validateColorRGBA($r,$g,$b,$a,'font_color_title_RGBA');
-		if($color!='')
-		{
-			$this->font_color_title($color);
-		}
-	}
-	function font_color_title_HEX($c)
-	{
-		$color = $this->validateColorHEX($c,'font_color_title_HEX');
-		if($color!='')
-		{
-			$this->font_color_title($color);
-		}
-	}
-	function font_color_subtitle_RGBA($r,$g,$b,$a=1)
-	{
-		$color = $this->validateColorRGBA($r,$g,$b,$a,'font_color_subtitle_RGBA');
-		if($color!='')
-		{
-			$this->font_color_subtitle($color);
-		}
-	}
-	function font_color_subtitle_HEX($c)
-	{
-		$color = $this->validateColorHEX($c,'font_color_subtitle_HEC');
-		if($color!='')
-		{
-			$this->font_color_subtitle($color);
-		}
-	}
-	function header_bg_color_RGBA($r,$g,$b,$a=1)
-	{
-		$color = $this->validateColorRGBA($r,$g,$b,$a,'header_bg_color_RGBA');
-		if($color!='')
-		{
-			$this->header_bg_color($color);
-		}
-	}
-	function header_bg_color_HEX($c)
-	{
-		$color = $this->validateColorHEX($c,'header_bg_color_HEX');
-		if($color!='')
-		{
-			$this->header_bg_color($color);
-		}
-	}
+
 	private function validateColorHEX($c,$func)
 	{
 		if(!ctype_xdigit($c))
@@ -768,36 +1007,14 @@ class istyle
 		$this->i_methods['underground_color']['id']='IST007';
 		$this->i_methods['underground_color']['value']=$c;
 	}
-	private function bg_color($c)
-	{
-		$this->i_methods['bg_color']['property']='bg_color';
-		$this->i_methods['bg_color']['id']='IST022';
-		$this->i_methods['bg_color']['value']=$c;
-	}
 	private function font_color($c)
 	{
 		$this->i_methods['font_color']['property']='font_color';
 		$this->i_methods['font_color']['id']='IST023';
 		$this->i_methods['font_color']['value']=$c;
 	}
-	private function font_color_title($c)
-	{
-		$this->i_methods['font_color_title']['property']='font_color_title';
-		$this->i_methods['font_color_title']['id']='IST024';
-		$this->i_methods['font_color_title']['value']=$c;
-	}
-	private function font_color_subtitle($c)
-	{
-		$this->i_methods['font_color_subtitle']['property']='font_color_subtitle';
-		$this->i_methods['font_color_subtitle']['id']='IST025';
-		$this->i_methods['font_color_subtitle']['value']=$c;
-	}
-	private function header_bg_color($c)
-	{
-		$this->i_methods['header_bg_color']['property']='header_bg_color';
-		$this->i_methods['header_bg_color']['id']='IST026';
-		$this->i_methods['header_bg_color']['value']=$c;
-	}
+
+
 	function get()
 	{
 		return $this->i_methods;

@@ -798,6 +798,17 @@ class style
 		$this->i_methods['line_header']='border-bottom:'.$w.'px '.$t.' '.$color.';';	
 	}
 
+	function font_color_header($c)
+	{
+		$color = color::get($c);
+		if($color=='')
+		{
+			sentinel::registerER('font_color_header [color]',config::$parameters['Language'],22);
+			return '';
+		}
+		$this->i_methods['font_color_header']='color: '.$color.';';
+	}
+
 	function font_header($c)
 	{
 		$this->i_methods['font_header'] = 'font-family: '.$c.';';

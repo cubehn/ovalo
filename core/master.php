@@ -465,7 +465,7 @@ class Shade{
 	}
 }
 
-class color{
+class color{ //existe la misma clase en ovalo, tomar en cuenta al hacer cambios
 	static function rgba($r=255,$g=255,$b=255,$a=1){
 		$color = ['type'=>'rgba','cr'=>$r,'cg'=>$g,'cb'=>$b,'ca'=>$a,'ch'=>'','cn'=>''];
 		return $color;
