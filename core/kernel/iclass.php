@@ -510,15 +510,6 @@ class style
 		$this->i_methods['shadow']='box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);';
 	}
 
-	// --> agrega sombra al titulo
-	function shadow_title($ins)
-	{
-		if($ins>10)$ins=10;
-		$ins = $ins/10;
-		$rt = '1px 1px 1px rgba(0, 0, 0, '.$ins.');';
-		$this->i_methods['shadow_title']='text-shadow: '.$rt;	
-	}
-
 	// --> agrega color al fondo que rodea al section
 	function underground_color_RGBA($r,$g,$b,$a=1)
 	{
@@ -601,6 +592,39 @@ class style
 		}
 	}
 
+	function font_header($c)
+	{
+		$this->i_methods['font_header'] = 'font-family: '.$c.';';
+	}
+
+	function font_size_header($c)
+	{
+		$this->i_methods['font_size_header'] = 'font-size: '.$c.'pt;';	
+	}
+
+	// --> agrega sombra al texto del header
+	function shadow_header($ins)
+	{
+		if($ins>10)$ins=10;
+		$ins = $ins/10;
+		$rt = '1px 1px 1px rgba(0, 0, 0, '.$ins.');';
+		$this->i_methods['shadow_header']='text-shadow: '.$rt;	
+	}
+
+	function decoration_header($a,$c='black',$s='solid')
+	{
+		$this->i_methods['decoration_header'] = 'text-decoration: '.$a.';';
+		$this->i_methods['decoration_header_color'] = 'text-decoration-color: '.$c.';';
+		$this->i_methods['decoration_header_style'] = 'text-decoration-style: '.$s.';';
+	}
+
+	function bold_header($c)
+	{
+		if($c==1) $b='bold';
+		else $b='normal';
+		$this->i_methods['bold_header'] = 'font-weight: '.$b.';';
+	}
+
 	function font_title($c)
 	{
 		$this->i_methods['font_title'] = 'font-family: '.$c.';';
@@ -616,13 +640,34 @@ class style
 		$this->i_methods['align_title'] = 'text-align: '.$a.';';
 	}
 
+	// --> agrega sombra al titulo
+	function shadow_title($ins)
+	{
+		if($ins>10)$ins=10;
+		$ins = $ins/10;
+		$rt = '1px 1px 1px rgba(0, 0, 0, '.$ins.');';
+		$this->i_methods['shadow_title']='text-shadow: '.$rt;	
+	}
+
 	function decoration_title($a,$c='black',$s='solid')
 	{
 		$this->i_methods['decoration_title'] = 'text-decoration: '.$a.';';
 		$this->i_methods['decoration_title_color'] = 'text-decoration-color: '.$c.';';
 		$this->i_methods['decoration_title_style'] = 'text-decoration-style: '.$s.';';
 	}
-	
+
+	function bg_color_title($c)
+	{
+		$this->i_methods['bg_color_title'] = 'background-color: '.$c.';';
+	}
+
+	function bold_title($c)
+	{
+		if($c==1) $b='bold';
+		else $b='normal';
+		$this->i_methods['bold_title'] = 'font-weight: '.$b.';';
+	}
+
 	function font_color_subtitle_RGBA($r,$g,$b,$a=1)
 	{
 		$color = $this->validateColorRGBA($r,$g,$b,$a,'font_color_subtitle_RGBA');
@@ -665,11 +710,32 @@ class style
 		$this->i_methods['align_subtitle'] = 'text-align: '.$a.';';
 	}
 
+	// --> agrega sombra al titulo
+	function shadow_subtitle($ins)
+	{
+		if($ins>10)$ins=10;
+		$ins = $ins/10;
+		$rt = '1px 1px 1px rgba(0, 0, 0, '.$ins.');';
+		$this->i_methods['shadow_subtitle']='text-shadow: '.$rt;	
+	}
+
 	function decoration_subtitle($a,$c='black',$s='solid')
 	{
 		$this->i_methods['decoration_subtitle'] = 'text-decoration: '.$a.';';
 		$this->i_methods['decoration_subtitle_color'] = 'text-decoration-color: '.$c.';';
 		$this->i_methods['decoration_subtitle_style'] = 'text-decoration-style: '.$s.';';
+	}
+
+	function bg_color_subtitle($c)
+	{
+		$this->i_methods['bg_color_subtitle'] = 'background-color: '.$c.';';
+	}
+
+	function bold_subtitle($c)
+	{
+		if($c==1) $b='bold';
+		else $b='normal';
+		$this->i_methods['bold_subtitle'] = 'font-weight: '.$b.';';
 	}
 
 	// --> funcion establece los bordes redondeados del section

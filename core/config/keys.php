@@ -132,7 +132,13 @@ class keys{
 					['header_line','h'],
 					['header_justify','h'],
 					['border_radius_header','h'],
-					['header_font','t'],
+					['font_header','h'],
+					['font_size_header','h'],
+					['shadow_header','h'],
+					['decoration_header','h'],
+					['decoration_header_color','h'],
+					['decoration_header_style','h'],
+					['bold_header','h'],
 
 					//UNDERGROUND
 					['underground_color','main'],
@@ -162,6 +168,8 @@ class keys{
 					['decoration_title','t'],
 					['decoration_title_color','t'],
 					['decoration_title_style','t'],
+					['bg_color_title','t'],
+					['bold_title','t'],
 					['font_color_subtitle','s'],
 					['font_subtitle','s'],
 					['font_size_subtitle','s'],
@@ -169,6 +177,9 @@ class keys{
 					['decoration_subtitle','s'],
 					['decoration_subtitle_color','s'],
 					['decoration_subtitle_style','s'],
+					['bg_color_subtitle','s'],
+					['bold_subtitle','s'],
+					['shadow_subtitle','s'],
 
 					//ACTIONS
 					['padding','act'],
