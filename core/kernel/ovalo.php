@@ -764,6 +764,42 @@ class istyle
 		$this->i_methods['bg_color']['id']='IST022';
 		$this->i_methods['bg_color']['value']=$color;
 	}
+	private function footer_background_color($c)
+	{
+		$color = color::get($c);
+		if($color=='')
+		{
+			//sentinel::registerER('line_header [color]',config::$parameters['Language'],22);
+			return '';
+		}
+		$this->i_methods['footer_background_color']['property']='backgroundColor';
+		$this->i_methods['footer_background_color']['id']='IST001';
+		$this->i_methods['footer_background_color']['value']=$color;
+	}
+	private function underground_color($c)
+	{
+		$color = color::get($c);
+		if($color=='')
+		{
+			//sentinel::registerER('line_header [color]',config::$parameters['Language'],22);
+			return '';
+		}
+		$this->i_methods['underground_color']['property']='underground_color';
+		$this->i_methods['underground_color']['id']='IST007';
+		$this->i_methods['underground_color']['value']=$color;
+	}
+	private function font_color($c)
+	{
+		$color = color::get($c);
+		if($color=='')
+		{
+			//sentinel::registerER('line_header [color]',config::$parameters['Language'],22);
+			return '';
+		}
+		$this->i_methods['font_color']['property']='font_color';
+		$this->i_methods['font_color']['id']='IST023';
+		$this->i_methods['font_color']['value']=$color;
+	}
 	function narrow_footer()
 	{
 		$this->i_methods['narrow_footer']['property']='narrow_footer';
@@ -921,98 +957,8 @@ class istyle
 		$this->i_methods['border_radius_header']['property']='border_radius_header';
 		$this->i_methods['border_radius_header']['id']='IST021';
 		$this->i_methods['border_radius_header']['value']=$rf.' 0rem 0rem;';
-
-		//$this->i_methods['border_radius_header']='border-radius: '.$rf.' 0rem 0rem;';
-	}
-	function underground_color_RGBA($r,$g,$b,$a=1)
-	{
-		$color = $this->validateColorRGBA($r,$g,$b,$a,'header_bg_color_RGBA');
-		if($color!='')
-		{
-			$this->underground_color($color);
-		}
-	}
-	function underground_color_HEX($c)
-	{
-		$color = $this->validateColorHEX($c,'font_color_HEX');
-		if($color!='')
-		{
-			$this->underground_color($color);
-		}
-	}
-	function footer_background_color_HEX($c){
-		$color = $this->validateColorHEX($c,'footer_background_color_HEX');
-		if($color!='')
-		{
-			$this->footer_background_color($color);
-		}
-	}
-	function footer_background_color_RGBA($r,$g,$b,$a=1)
-	{
-		$color = $this->validateColorRGBA($r,$g,$b,$a,'footer_background_color_RGBA');
-		if($color!='')
-		{
-			$this->footer_background_color($color);
-		}
-	}
-	function font_color_RGBA($r,$g,$b,$a=1)
-	{
-		$color = $this->validateColorRGBA($r,$g,$b,$a,'font_color_RGBA');
-		if($color!='')
-		{
-			$this->font_color($color);
-		}
-	}
-	function font_color_HEX($c)
-	{
-		$color = $this->validateColorHEX($c,'font_color_HEX');
-		if($color!='')
-		{
-			$this->font_color($color);
-		}
 	}
 
-	private function validateColorHEX($c,$func)
-	{
-		if(!ctype_xdigit($c))
-		{
-			sentinel::registerER($func.' ['."$c".']',config::$parameters['Language'],18);
-			return '';	
-		}
-		return "#$c";
-	}
-	private function validateColorRGBA($r,$g,$b,$a,$func)
-	{
-		if(($r<0 or $r>255) or ($g<0 or $g>255) or ($b<0 or $b>255))
-		{
-			sentinel::registerER($func.' ['."$r,$g,$b,$a".']',config::$parameters['Language'],15);
-			return '';
-		}
-		if($a<0 or $a>1)
-		{
-			sentinel::registerER($func.' ['."$r,$g,$b,$a".']',config::$parameters['Language'],16);
-			return '';
-		}
-		return "rgba($r,$g,$b,$a)";
-	}
-	private function footer_background_color($c)
-	{
-		$this->i_methods['footer_background_color']['property']='backgroundColor';
-		$this->i_methods['footer_background_color']['id']='IST001';
-		$this->i_methods['footer_background_color']['value']=$c;
-	}
-	private function underground_color($c)
-	{
-		$this->i_methods['underground_color']['property']='underground_color';
-		$this->i_methods['underground_color']['id']='IST007';
-		$this->i_methods['underground_color']['value']=$c;
-	}
-	private function font_color($c)
-	{
-		$this->i_methods['font_color']['property']='font_color';
-		$this->i_methods['font_color']['id']='IST023';
-		$this->i_methods['font_color']['value']=$c;
-	}
 
 
 	function get()
