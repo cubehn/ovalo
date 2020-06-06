@@ -158,9 +158,17 @@ class keys{
 					['font_color_title','t'],
 					['font_title','t'],
 					['font_size_title','t'],
+					['align_title','t'],
+					['decoration_title','t'],
+					['decoration_title_color','t'],
+					['decoration_title_style','t'],
 					['font_color_subtitle','s'],
 					['font_subtitle','s'],
 					['font_size_subtitle','s'],
+					['align_subtitle','s'],
+					['decoration_subtitle','s'],
+					['decoration_subtitle_color','s'],
+					['decoration_subtitle_style','s'],
 
 					//ACTIONS
 					['padding','act'],

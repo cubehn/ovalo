@@ -256,6 +256,7 @@ class Shade{
 		if($eo['name']=='load')$INIT='INIT("'.$init_secs.'");';
 		if($eo['name']=='keydown')$KEY='event';
 
+
 		//estructura de ejecucion
 		if($isShade==0)
 			$ev = 'document.getElementById("[[sec]]").addEventListener("[[event]]",function(){bbprocess("[[process]]","eventObjs","[[sec]]");}, true);';
@@ -300,6 +301,8 @@ class Shade{
 		$ev = ovalo::OVreepNDDJ('sec',$ev_sec,$ev);
 		$ev = ovalo::OVreepNDDJ('event',$ev_event,$ev);
 		$ev = ovalo::OVreepNDDJ('process',$ev_process,$ev);
+
+	sentinel::registerTest($ev_event,$ev);
 
 		return $ev;
 	}

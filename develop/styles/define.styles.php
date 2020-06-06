@@ -8,7 +8,7 @@ Visualization::define(SECTION_NORMAL,[
 	's_body'=>'card-body',
 	's_header'=>'card-header',
 	's_title'=>'card-title',
-	's_subtitle'=>'card-subtitle mb-2 text-muted',
+	's_subtitle'=>'card-subtitle mb-2',
 	's_actions' => 'card-footer'
 ]);
 
@@ -17,7 +17,7 @@ Visualization::define(SECTION_CAROUSEL,[
 	's_body'=>'card-body',
 	's_header'=>'card-header',
 	's_title'=>'card-title',
-	's_subtitle'=>'card-subtitle mb-2 text-muted',
+	's_subtitle'=>'card-subtitle mb-2',
 	's_actions' => 'card-footer'
 ]);
 
@@ -27,14 +27,14 @@ Visualization::define(SECTION_MODAL,[
 	's_header'=>'modal-header',
 	's_title'=>'modal-title',
 	's_footer'=>'modal-footer',
-	's_subtitle'=>'card-subtitle mb-2 text-muted'
+	's_subtitle'=>'card-subtitle mb-2'
 ]);
 
 Visualization::define(SECTION_PARALLAX,[
 	's_head'=>'parallax-head',
 	's_head_box'=>'card',
 	's_title'=>'modal-title',
-	's_subtitle'=>'card-subtitle mb-2 text-muted',
+	's_subtitle'=>'card-subtitle mb-2',
 	's_img'=>'parallax-img'
 ]);
 
@@ -47,7 +47,7 @@ Visualization::define(SECTION_PILLS,[
 	's_button'=>'nav-item',
 	's_style_button'=>'nav-link',
 	's_title'=>'card-title',
-	's_subtitle'=>'card-subtitle text-muted'
+	's_subtitle'=>'card-subtitle'
 ]);
 
 Visualization::define(SECTION_TAB,[
@@ -59,7 +59,7 @@ Visualization::define(SECTION_TAB,[
 	's_button'=>'nav-item',
 	's_style_button'=>'nav-link',
 	's_title'=>'card-title',
-	's_subtitle'=>'card-subtitle text-muted'
+	's_subtitle'=>'card-subtitle'
 ]);
 
 Visualization::define(SECTION_COLLAPSE,[
@@ -69,7 +69,7 @@ Visualization::define(SECTION_COLLAPSE,[
 	's_button'=>'btn btn-link',
 	's_style_button'=>'',
 	's_title'=>'card-title',
-	's_subtitle'=>'card-subtitle text-muted'
+	's_subtitle'=>'card-subtitle'
 ]);
 
 Visualization::define(SECTION_BUTTON,[
@@ -77,7 +77,7 @@ Visualization::define(SECTION_BUTTON,[
 	's_body'=>'card-body',
 	's_header'=>'card-header',
 	's_title'=>'card-title',
-	's_subtitle'=>'card-subtitle mb-2 text-muted',
+	's_subtitle'=>'card-subtitle mb-2',
 	's_button'=>'btn btn-light'
 ]);
 

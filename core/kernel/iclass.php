@@ -149,13 +149,22 @@ class action{
 	public $event;
 	public $MySection;
 	public $style;
-	function __construct(){
-		$name='a'.Control::getNextIdAction();
+	function __construct($name){
+		if($name=='')$name='a'.Control::getNextIdAction();
 		$this->i_name=$name;
 		$this->properties = new action_properties;
+		$this->properties->type=NORMAL;
 		$this->event = new action_events;
 		$this->style = new style('action');
 	}
+	/*
+	function getClone($name)
+	{
+		$c = clone $this;
+		$c->i_name=$name;
+		$c->event = $this->event;
+		return $c;
+	}*/
 	function getCSS()
 	{
 		$ib = '';
@@ -273,7 +282,6 @@ class action{
 		//-----
 		$r=ovalo::OVreepNDDJ("id",$act->i_name,$r);
 		$r=ovalo::OVreepNDDJ("parent_id",$act->i_parentId,$r);
-		//$r=ovalo::OVreepNDDJ("xcode",$act->event->xcode,$r); //ya no por el cambio del uso de los eventos
 		$r=ovalo::OVreepNDDJ("sec",$act->MySection,$r);
 
 		foreach (keys::$sectionsCommands['methods'] as $m) {
@@ -507,8 +515,8 @@ class style
 	{
 		if($ins>10)$ins=10;
 		$ins = $ins/10;
-		$rt = '2px 2px 2px rgba(0, 0, 0, '.$ins.');';
-		$this->i_methods['shadow_title']='textShadow: '.$rt;	
+		$rt = '1px 1px 1px rgba(0, 0, 0, '.$ins.');';
+		$this->i_methods['shadow_title']='text-shadow: '.$rt;	
 	}
 
 	// --> agrega color al fondo que rodea al section
@@ -603,6 +611,18 @@ class style
 		$this->i_methods['font_size_title'] = 'font-size: '.$c.'pt;';	
 	}
 
+	function align_title($a)
+	{
+		$this->i_methods['align_title'] = 'text-align: '.$a.';';
+	}
+
+	function decoration_title($a,$c='black',$s='solid')
+	{
+		$this->i_methods['decoration_title'] = 'text-decoration: '.$a.';';
+		$this->i_methods['decoration_title_color'] = 'text-decoration-color: '.$c.';';
+		$this->i_methods['decoration_title_style'] = 'text-decoration-style: '.$s.';';
+	}
+	
 	function font_color_subtitle_RGBA($r,$g,$b,$a=1)
 	{
 		$color = $this->validateColorRGBA($r,$g,$b,$a,'font_color_subtitle_RGBA');
@@ -638,6 +658,18 @@ class style
 	function font_size_subtitle($c)
 	{
 		$this->i_methods['font_size_subtitle'] = 'font-size: '.$c.'pt;';	
+	}
+
+	function align_subtitle($a)
+	{
+		$this->i_methods['align_subtitle'] = 'text-align: '.$a.';';
+	}
+
+	function decoration_subtitle($a,$c='black',$s='solid')
+	{
+		$this->i_methods['decoration_subtitle'] = 'text-decoration: '.$a.';';
+		$this->i_methods['decoration_subtitle_color'] = 'text-decoration-color: '.$c.';';
+		$this->i_methods['decoration_subtitle_style'] = 'text-decoration-style: '.$s.';';
 	}
 
 	// --> funcion establece los bordes redondeados del section
