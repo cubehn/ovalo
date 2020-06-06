@@ -38,3 +38,5 @@ El valor no es un hexadecimal valido
 Objeto incorrecto, no es un Action
 El color asignado para el "actions" es incorrecto
 El proceso no existe
+El color es incorrecto
+Los estilos de sombra solo aceptan colores RGBA

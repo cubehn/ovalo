@@ -12,6 +12,7 @@ use core\config\keys\keys;
 use ovalo\config\config;
 use core\kernel\ovalo;
 use core\master\control;
+use core\master\color;
 use core\sentinel\sentinel;
 sentinel::add(__FILE__);
 
@@ -322,7 +323,10 @@ class section_properties{
 	public $title;
 	public $subtitle;
 	public $header;
-	public $bg;
+	public $alert;
+	public $error;
+	public $warning;
+	//public $bg;
 	public $debug;
 }
 
@@ -494,14 +498,21 @@ class style
 	}
 
 	// --> agrega borde al section
-	function border($a,$c='black',$t='solid')
+	function border($a,$c='',$t='solid')
 	{
+		if($c=='') $c=color::name('black');
+		$color = color::get($c);
+		if($color=='')
+		{
+			sentinel::registerER('border [color]',config::$parameters['Language'],22);
+			return '';
+		}
 		if(!in_array($t,keys::$sectionsCommands['borderStyles']))
 		{
 			sentinel::registerER('border ['."$t".']',config::$parameters['Language'],17);
 			return '';
 		}
-		$this->i_methods['border']='border:'.$a.'px '.$t.' '.$c.';';
+		$this->i_methods['border']='border:'.$a.'px '.$t.' '.$color.';';
 	}
 
 	// --> agrega sombra al section
@@ -511,38 +522,21 @@ class style
 	}
 
 	// --> agrega color al fondo que rodea al section
-	function underground_color_RGBA($r,$g,$b,$a=1)
+	function underground_color($c)
 	{
-		$color = $this->validateColorRGBA($r,$g,$b,$a,'header_bg_color_RGBA');
-		if($color!='')
+		$color = color::get($c);
+		if($color=='')
 		{
-			$this->underground_color($color);
+			sentinel::registerER('underground_color [color]',config::$parameters['Language'],22);
+			return '';
 		}
-	}
-	// --> agrega color al fondo que rodea al section
-	function underground_color_HEX($r,$g,$b,$a=1)
-	{
-		$color = $this->validateColorHEX($c,'font_color_HEX');
-		if($color!='')
-		{
-			$this->underground_color($color);
-		}
+		$this->i_methods['underground_color']='background-color: '.$color.';';
 	}
 
 	// --> quita los espacios
 	function narrow()
 	{
 		$this->i_methods['narrow']='padding:0;';
-	}
-
-	// --> agrega color de fondo al section (RGBA)
-	function bg_color_RGBA($r,$g,$b,$a=1)
-	{
-		$color = $this->validateColorRGBA($r,$g,$b,$a,'bg_color_RGBA');
-		if($color!='')
-		{
-			$this->bg_color($color);
-		}
 	}
 
 	function font($c)
@@ -555,74 +549,37 @@ class style
 		$this->i_methods['font_size'] = 'font-size: '.$c.'pt;';	
 	}
 
-	// --> agrega color de fondo al section (HEX)
-	function bg_color_HEX($c)
+	function bg_color($c)
 	{
-		$color = $this->validateColorHEX($c,'bg_color_HEX');
-		if($color!='')
+		$color = color::get($c);
+		if($color=='')
 		{
-			$this->bg_color($color);
+			sentinel::registerER('bg_color [color]',config::$parameters['Language'],22);
+			return '';
 		}
+		$this->i_methods['bg_color']='background-color: '.$color.';';
 	}
 
-	function font_color_RGBA($r,$g,$b,$a=1)
+	function font_color($c)
 	{
-		$color = $this->validateColorRGBA($r,$g,$b,$a,'font_color_RGBA');
-		if($color!='')
+		$color = color::get($c);
+		if($color=='')
 		{
-			$this->font_color($color);
+			sentinel::registerER('font_color [color]',config::$parameters['Language'],22);
+			return '';
 		}
+		$this->i_methods['font_color']='color: '.$color.';';
 	}
 
-	function font_color_HEX($c)
+	function font_color_title($c)
 	{
-		$color = $this->validateColorHEX($c,'font_color_HEX');
-		if($color!='')
+		$color = color::get($c);
+		if($color=='')
 		{
-			$this->font_color($color);
+			sentinel::registerER('font_color_title [color]',config::$parameters['Language'],22);
+			return '';
 		}
-	}
-
-	function font_color_title_RGBA($r,$g,$b,$a=1)
-	{
-		$color = $this->validateColorRGBA($r,$g,$b,$a,'font_color_title_RGBA');
-		if($color!='')
-		{
-			$this->font_color_title($color);
-		}
-	}
-
-	function font_header($c)
-	{
-		$this->i_methods['font_header'] = 'font-family: '.$c.';';
-	}
-
-	function font_size_header($c)
-	{
-		$this->i_methods['font_size_header'] = 'font-size: '.$c.'pt;';	
-	}
-
-	// --> agrega sombra al texto del header
-	function shadow_header($ins)
-	{
-		if($ins>10)$ins=10;
-		$ins = $ins/10;
-		$rt = '1px 1px 1px rgba(0, 0, 0, '.$ins.');';
-		$this->i_methods['shadow_header']='text-shadow: '.$rt;	
-	}
-
-	function decoration_header($a,$c='black',$s='solid')
-	{
-		$this->i_methods['decoration_header'] = 'text-decoration: '.$a.';';
-		$this->i_methods['decoration_header_color'] = 'text-decoration-color: '.$c.';';
-		$this->i_methods['decoration_header_style'] = 'text-decoration-style: '.$s.';';
-	}
-
-	function bold_header($c)
-	{
-		if($c==1) $b='bold';
-		else $b='normal';
-		$this->i_methods['bold_header'] = 'font-weight: '.$b.';';
+		$this->i_methods['font_color_title']='color: '.$color.';';
 	}
 
 	function font_title($c)
@@ -641,24 +598,50 @@ class style
 	}
 
 	// --> agrega sombra al titulo
-	function shadow_title($ins)
+	function shadow_title($ins,$c='')
 	{
 		if($ins>10)$ins=10;
 		$ins = $ins/10;
-		$rt = '1px 1px 1px rgba(0, 0, 0, '.$ins.');';
+
+		if($c=='') $c=color::rgba(0,0,0,$ins);
+		$color = color::get($c);
+		if($color=='')
+		{
+			sentinel::registerER('shadow_header [color]',config::$parameters['Language'],22);
+			return '';
+		}
+		if($c['type']!='rgba')
+		{
+			sentinel::registerER('shadow_header [color]',config::$parameters['Language'],23);
+			return '';	
+		}
+		$rt = '1px 1px 1px '.$color.';';
 		$this->i_methods['shadow_title']='text-shadow: '.$rt;	
 	}
 
-	function decoration_title($a,$c='black',$s='solid')
+	function decoration_title($a,$c='',$s='solid')
 	{
+		if($c=='') $c=color::name('black');
+		$color = color::get($c);
+		if($color=='')
+		{
+			sentinel::registerER('decoration_title [color]',config::$parameters['Language'],22);
+			return '';
+		}
 		$this->i_methods['decoration_title'] = 'text-decoration: '.$a.';';
-		$this->i_methods['decoration_title_color'] = 'text-decoration-color: '.$c.';';
+		$this->i_methods['decoration_title_color'] = 'text-decoration-color: '.$color.';';
 		$this->i_methods['decoration_title_style'] = 'text-decoration-style: '.$s.';';
 	}
 
 	function bg_color_title($c)
 	{
-		$this->i_methods['bg_color_title'] = 'background-color: '.$c.';';
+		$color = color::get($c);
+		if($color=='')
+		{
+			sentinel::registerER('bg_color_title [color]',config::$parameters['Language'],22);
+			return '';
+		}
+		$this->i_methods['bg_color_title'] = 'background-color: '.$color.';';
 	}
 
 	function bold_title($c)
@@ -668,31 +651,15 @@ class style
 		$this->i_methods['bold_title'] = 'font-weight: '.$b.';';
 	}
 
-	function font_color_subtitle_RGBA($r,$g,$b,$a=1)
+	function font_color_subtitle($c)
 	{
-		$color = $this->validateColorRGBA($r,$g,$b,$a,'font_color_subtitle_RGBA');
-		if($color!='')
+		$color = color::get($c);
+		if($color=='')
 		{
-			$this->font_color_subtitle($color);
+			sentinel::registerER('font_color_subtitle [color]',config::$parameters['Language'],22);
+			return '';
 		}
-	}
-
-	function font_color_title_HEX($c)
-	{
-		$color = $this->validateColorHEX($c,'font_color_title_HEX');
-		if($color!='')
-		{
-			$this->font_color_title($color);
-		}
-	}
-
-	function font_color_subtitle_HEX($c)
-	{
-		$color = $this->validateColorHEX($c,'font_color_subtitle_HEC');
-		if($color!='')
-		{
-			$this->font_color_subtitle($color);
-		}
+		$this->i_methods['font_color_subtitle']='color: '.$color.';';
 	}
 
 	function font_subtitle($c)
@@ -711,24 +678,50 @@ class style
 	}
 
 	// --> agrega sombra al titulo
-	function shadow_subtitle($ins)
+	function shadow_subtitle($ins,$c='')
 	{
 		if($ins>10)$ins=10;
 		$ins = $ins/10;
-		$rt = '1px 1px 1px rgba(0, 0, 0, '.$ins.');';
+
+		if($c=='') $c=color::rgba(0,0,0,$ins);
+		$color = color::get($c);
+		if($color=='')
+		{
+			sentinel::registerER('shadow_header [color]',config::$parameters['Language'],22);
+			return '';
+		}
+		if($c['type']!='rgba')
+		{
+			sentinel::registerER('shadow_header [color]',config::$parameters['Language'],23);
+			return '';	
+		}
+		$rt = '1px 1px 1px '.$color.';';
 		$this->i_methods['shadow_subtitle']='text-shadow: '.$rt;	
 	}
 
-	function decoration_subtitle($a,$c='black',$s='solid')
+	function decoration_subtitle($a,$c='',$s='solid')
 	{
+		if($c=='') $c=color::name('black');
+		$color = color::get($c);
+		if($color=='')
+		{
+			sentinel::registerER('decoration_subtitle [color]',config::$parameters['Language'],22);
+			return '';
+		}
 		$this->i_methods['decoration_subtitle'] = 'text-decoration: '.$a.';';
-		$this->i_methods['decoration_subtitle_color'] = 'text-decoration-color: '.$c.';';
+		$this->i_methods['decoration_subtitle_color'] = 'text-decoration-color: '.$color.';';
 		$this->i_methods['decoration_subtitle_style'] = 'text-decoration-style: '.$s.';';
 	}
 
 	function bg_color_subtitle($c)
 	{
-		$this->i_methods['bg_color_subtitle'] = 'background-color: '.$c.';';
+		$color = color::get($c);
+		if($color=='')
+		{
+			sentinel::registerER('bg_color_subtitle [color]',config::$parameters['Language'],22);
+			return '';
+		}
+		$this->i_methods['bg_color_subtitle'] = 'background-color: '.$color.';';
 	}
 
 	function bold_subtitle($c)
@@ -782,40 +775,93 @@ class style
 	// ------------------------------------------------------------------------------
 	// --> ESTILOS HEADER -----------------------------------------------------------
 	// --> dispone los elementos que esten en el encabezado de forma justificada
-	function header_justify()
+	function justify_header()
 	{
-		$this->i_methods['header_justify']='display: flex;justify-content: space-between;';
+		$this->i_methods['justify_header']='display: flex;justify-content: space-between;';
 	}
 
 	// --> establece el estilo de la linea que divide el header del cuerpo
-	function header_line($w,$c='black',$t='solid')
+	function line_header($w,$c='',$t='solid')
 	{
-		if(!in_array($t,keys::$sectionsCommands['borderStyles']))
+		if($c=='') $c=color::name('black');
+		$color = color::get($c);
+		if($color=='')
 		{
-			sentinel::registerER('header_line ['."$t".']',config::$parameters['Language'],17);
+			sentinel::registerER('line_header [color]',config::$parameters['Language'],22);
 			return '';
 		}
-		$this->i_methods['header_line']='border-bottom:'.$w.'px '.$t.' '.$c.';';	
+		if(!in_array($t,keys::$sectionsCommands['borderStyles']))
+		{
+			sentinel::registerER('line_header ['."$t".']',config::$parameters['Language'],17);
+			return '';
+		}
+		$this->i_methods['line_header']='border-bottom:'.$w.'px '.$t.' '.$color.';';	
 	}
 
-	// --> establece un color de fondo al header
-	function header_bg_color_RGBA($r,$g,$b,$a=1)
+	function font_header($c)
 	{
-		$color = $this->validateColorRGBA($r,$g,$b,$a,'header_bg_color_RGBA');
-		if($color!='')
-		{
-			$this->header_bg_color($color);
-		}
+		$this->i_methods['font_header'] = 'font-family: '.$c.';';
 	}
 
-	// --> establece un color de fondo al header (HEX)
-	function header_bg_color_HEX($c)
+	function font_size_header($c)
 	{
-		$color = $this->validateColorHEX($c,'header_bg_color_HEX');
-		if($color!='')
+		$this->i_methods['font_size_header'] = 'font-size: '.$c.'pt;';	
+	}
+
+	// --> agrega sombra al texto del header
+	function shadow_header($ins,$c='')
+	{
+		if($ins>10)$ins=10;
+		$ins = $ins/10;
+
+		if($c=='') $c=color::rgba(0,0,0,$ins);
+		$color = color::get($c);
+		if($color=='')
 		{
-			$this->header_bg_color($color);
+			sentinel::registerER('shadow_header [color]',config::$parameters['Language'],22);
+			return '';
 		}
+		if($c['type']!='rgba')
+		{
+			sentinel::registerER('shadow_header [color]',config::$parameters['Language'],23);
+			return '';	
+		}
+		
+		//$rt = '1px 1px 1px rgba(0, 0, 0, '.$ins.');';
+		$rt = '1px 1px 1px '.$color.';';
+		$this->i_methods['shadow_header']='text-shadow: '.$rt;	
+	}
+
+	function decoration_header($a,$c='',$s='solid')
+	{
+		if($c=='') $c=color::name('black');
+		$color = color::get($c);
+		if($color=='')
+		{
+			sentinel::registerER('decoration_header [color]',config::$parameters['Language'],22);
+			return '';
+		}
+		$this->i_methods['decoration_header'] = 'text-decoration: '.$a.';';
+		$this->i_methods['decoration_header_color'] = 'text-decoration-color: '.$color.';';
+		$this->i_methods['decoration_header_style'] = 'text-decoration-style: '.$s.';';
+	}
+
+	function bold_header($c)
+	{
+		if($c==1) $b='bold';
+		else $b='normal';
+		$this->i_methods['bold_header'] = 'font-weight: '.$b.';';
+	}
+
+	function bg_color_header($c)
+	{
+		$color = color::get($c);
+		if($color=='')
+		{
+			sentinel::registerER('bg_color_header [color]',config::$parameters['Language'],22);
+			return '';
+		}
+		$this->i_methods['bg_color_header']='background-color: '.$color.';';
 	}
 
 	// ------------------------------------------------------------------------------
@@ -826,23 +872,15 @@ class style
 		$this->i_methods['narrow_footer']='padding:0;';
 	}
 
-	function footer_background_color_RGBA($r,$g,$b,$a=1)
+	function footer_background_color($c)
 	{
-		$color = $this->validateColorRGBA($r,$g,$b,$a,'footer_background_color_RGBA');
-		if($color!='')
+		$color = color::get($c);
+		if($color=='')
 		{
-			$this->footer_background_color($color);
+			sentinel::registerER('footer_background_color [color]',config::$parameters['Language'],22);
+			return '';
 		}
-	}
-
-	// --> establece un color de fondo al header (HEX)
-	function footer_background_color_HEX($c)
-	{
-		$color = $this->validateColorHEX($c,'footer_background_color_HEX');
-		if($color!='')
-		{
-			$this->footer_background_color($color);
-		}
+		$this->i_methods['footer_background_color']='background-color: '.$color.';';
 	}
 
 	function footer_line($w,$c='black',$t='solid')
@@ -860,75 +898,6 @@ class style
 		$this->i_methods['footer_justify']='display: flex;justify-content: space-between;';
 	}
 
-	// ------------------------------------------------------------------------------
-	// --> FUNCIONES PRIVADAS -------------------------------------------------------
-	// --> valida el color HEX
-	private function validateColorHEX($c,$func)
-	{
-		if(!ctype_xdigit($c))
-		{
-			sentinel::registerER($func.' ['."$c".']',config::$parameters['Language'],18);
-			return '';	
-		}
-		return "#$c";
-	}
-	// --> valida el color RGBA
-	private function validateColorRGBA($r,$g,$b,$a,$func)
-	{
-		if(($r<0 or $r>255) or ($g<0 or $g>255) or ($b<0 or $b>255))
-		{
-			sentinel::registerER($func.' ['."$r,$g,$b,$a".']',config::$parameters['Language'],15);
-			return '';
-		}
-		if($a<0 or $a>1)
-		{
-			sentinel::registerER($func.' ['."$r,$g,$b,$a".']',config::$parameters['Language'],16);
-			return '';
-		}
-		return "rgba($r,$g,$b,$a)";
-	}
-
-	// --> funcion interna para el color del area de fondo 
-	private function underground_color($c)
-	{
-		$this->i_methods['underground_color']='background-color: '.$c.';';
-	}
-
-	// --> funcion interna para el color de fondo del encabezado de la section
-	private function header_bg_color($c)
-	{
-		$this->i_methods['header_bg_color']='background-color: '.$c.';';
-	}
-
-	// --> funcion interna para el color de fondo del section
-	private function bg_color($c)
-	{
-		$this->i_methods['bg_color']='background-color: '.$c.';';
-	}
-
-	// --> funcion interna para el color de fondo del pie del section
-	private function footer_background_color($c)
-	{
-		$this->i_methods['footer_background_color']='background-color: '.$c.';';
-	}
-
-	// --> funcion interna asigna el color del texto
-	private function font_color($c)
-	{
-		$this->i_methods['font_color']='color: '.$c.';';
-	}
-
-	// --> funcion interna asigna el color del texto del titulo
-	private function font_color_title($c)
-	{
-		$this->i_methods['font_color_title']='color: '.$c.';';
-	}
-
-	// --> funcion interna asigna el color del texto del subtitulo
-	private function font_color_subtitle($c)
-	{
-		$this->i_methods['font_color_subtitle']='color: '.$c.';';
-	}
 
 
 

@@ -1,7 +1,8 @@
 <div id="main[[id]]" class="[[width]] pb-3 px-2">
+	[[debug]]
 	<div id="cont[[id]]" class="[[s_head]]" style="[[height]]">
 		[[header]]
-		[[debug]]
+		[[alert]][[warning]][[error]]
 		<div id="b[[id]]" class="[[s_body]]">
 			<div id="e[[id]]" style="[[align]]">
 			[[title]]

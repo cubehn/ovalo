@@ -465,6 +465,57 @@ class Shade{
 	}
 }
 
+class color{
+	static function rgba($r=255,$g=255,$b=255,$a=1){
+		$color = ['type'=>'rgba','cr'=>$r,'cg'=>$g,'cb'=>$b,'ca'=>$a,'ch'=>'','cn'=>''];
+		return $color;
+	}
+	static function hexa($h='FFFFFF'){
+		$color = ['type'=>'hexa','cr'=>'','cg'=>'','cb'=>'','ca'=>'','ch'=>$h,'cn'=>''];
+		return $color;
+	}
+	static function name($n='white'){
+		$color = ['type'=>'name','cr'=>'','cg'=>'','cb'=>'','ca'=>'','ch'=>'','cn'=>$n];
+		return $color;
+	}
+	static function get($c){
+		$color='';
+		if(is_array($c))
+		{
+			if(isset($c['type']))
+			{
+				$type = $c['type'];	
+				switch($type)
+				{
+					case 'rgba':
+						$cr=$c['cr'];
+						$cg=$c['cg'];
+						$cb=$c['cb'];
+						$ca=$c['ca'];
+						$color="rgba($cr,$cg,$cb,$ca)";
+						break;
+					case 'name':
+						$cn=$c['cn'];
+						$color=$cn;
+						break;
+					case 'hexa':
+						$ch=$c['ch'];
+						$color="#$ch";
+						break;
+				}
+			}
+			else
+			{
+				//error, no es un color valido		
+			}
+		}
+		else
+		{
+			//error, no es un color valido
+		}
+		return $color;
+	}
+}
 class icon{
 	static function get($n){
 		$i=ovalo::OVextractNDDJ_SH(Directory::get()['system'].'/icon-fa.sys.php','icon-fa.sys.php');

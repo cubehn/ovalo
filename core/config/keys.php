@@ -86,6 +86,9 @@ class keys{
 					['title','text'],
 					['header','text'],
 					['subtitle','text'],
+					['alert','text'],
+					['error','text'],
+					['warning','text'],
 					//['bg','file'],
 					['debug','system']
 				],
@@ -128,9 +131,11 @@ class keys{
 					['border_radius','cont'],
 
 					//HEADER
-					['header_bg_color','h'],
-					['header_line','h'],
-					['header_justify','h'],
+					//['header_bg_color','h'], //Obsoleto
+					['bg_color_header','h'],
+					//['header_line','h'], //Obsoleto
+					['line_header','h'],
+					['justify_header','h'],
 					['border_radius_header','h'],
 					['font_header','h'],
 					['font_size_header','h'],
