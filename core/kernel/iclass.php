@@ -516,9 +516,22 @@ class style
 	}
 
 	// --> agrega sombra al section
-	function shadow()
+	function shadow($c='')
 	{
-		$this->i_methods['shadow']='box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);';
+		if($c=='') $c=color::rgba(0,0,0,0.2);
+		$c['ca']=0.2;
+		$color = color::get($c);
+		if($color=='')
+		{
+			sentinel::registerER('border [color]',config::$parameters['Language'],22);
+			return '';
+		}
+		if($c['type']!='rgba')
+		{
+			sentinel::registerER('shadow_header [color]',config::$parameters['Language'],23);
+			return '';	
+		}
+		$this->i_methods['shadow']='box-shadow: 0 4px 8px 0 '.$color.', 0 6px 10px 0 '.$color.';';
 	}
 
 	// --> agrega color al fondo que rodea al section

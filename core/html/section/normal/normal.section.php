@@ -1,5 +1,4 @@
 <div id="main[[id]]" class="[[width]] pb-3 px-2">
-	[[debug]]
 	<div id="cont[[id]]" class="[[s_head]]" style="[[height]]">
 		[[header]]
 		[[alert]][[warning]][[error]]
@@ -9,6 +8,7 @@
 			[[subtitle]]
 			</div>
 			<div id="[[id]]">[[construction]]</div>
+			[[debug]]
 		</div>
 		<div id="f[[id]]" class="[[s_actions]]">
 			<div id="a[[id]]" class="row">

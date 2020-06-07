@@ -71,6 +71,11 @@ $sec1->properties->warning='mensaje de warning';*/
 //$sec1->style->font_color_title(color::hexa('FFFFFF'));
 //$sec1->style->font_color_header($c3);
 //$sec1->style->bg_color(color::name('silver'));
+//$sec1->style->border(2,color::name('red'));
+//$sec1->style->shadow(color::rgba(200,100,100));
+//$sec1->style->bg_image('f15.jpg','cover');
+//$sec1->style->underground_color(color::name('silver'));
+//$sec1->style->border_radius(4);
 
 //--------------------------------------------------------------
 //ESTRUCTURA, ASOCIACIONES

@@ -504,33 +504,64 @@ class isection_properties{
 class istyle
 {
 	private $i_methods;
-	function bg_image($img)
+	function bg_image($img,$type='')
 	{
 		$rt = Directory::get()['image'].$img;
-		$this->i_methods['bg_image']['property']='backgroundColor';
-		$this->i_methods['bg_image']['id']='IST002';
-		$this->i_methods['bg_image']['value']=$rt;
+		//if(file_exists($rt))
+		//{
+			$t = 'auto';
+			if($type!='')
+			{
+				$t = $type;
+			}
+			$this->i_methods['bg_image']['property']='bg_image';
+			$this->i_methods['bg_image']['id']='IST002';
+			$this->i_methods['bg_image']['value']=$rt;
+			$this->i_methods['bg_image_size']['property']='bg_image_size';
+			$this->i_methods['bg_image_size']['id']='IST005';
+			$this->i_methods['bg_image_size']['value']=$t;
+
+			//$this->i_methods['bg_image']="background-image: url('$rt');".$t;		
+		//}
+		//else
+		//{
+			//sentinel::registerER('bg_image ['.$rt.']: '.$img,config::$parameters['Language'],4);
+		//}
+
 	}
-	function border($a,$c='black',$t='solid')
+	function border($a,$c='',$t='solid')
 	{
-		/*if(!in_array($t,keys::$sectionsCommands['borderStyles']))
+		if($c=='') $c=color::name('black');
+		$color = color::get($c);
+		if($color=='')
 		{
-			sentinel::registerER('border ['."$t".']',config::$parameters['Language'],17);
+			//sentinel::registerER('decoration_title [color]',config::$parameters['Language'],22);
 			return '';
-		}*/
-		$rt = $a.'px '.$t.' '.$c;
+		}
+		$rt = $a.'px '.$t.' '.$color;
 		$this->i_methods['border']['property']='border';
 		$this->i_methods['border']['id']='IST003';
 		$this->i_methods['border']['value']=$rt;
-		//$this->i_methods['border']='border:'.$a.'px '.$t.' '.$c.';';
 	}
-	function shadow()
+	function shadow($c='')
 	{
-		$rt = '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);';
+		if($c=='') $c=color::rgba(0,0,0,0.2);
+		$c['ca']=0.2;
+		$color = color::get($c);
+		if($color=='')
+		{
+			//sentinel::registerER('border [color]',config::$parameters['Language'],22);
+			return '';
+		}
+		if($c['type']!='rgba')
+		{
+			//sentinel::registerER('shadow_header [color]',config::$parameters['Language'],23);
+			return '';	
+		}
+		$rt = '0 4px 8px 0 '.$color.', 0 6px 10px 0 '.$color.';';
 		$this->i_methods['shadow']['property']='box-shadow';
 		$this->i_methods['shadow']['id']='IST004';
 		$this->i_methods['shadow']['value']=$rt;
-		//$this->i_methods['shadow']='box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);';
 	}
 	function narrow()
 	{
@@ -764,7 +795,7 @@ class istyle
 		$this->i_methods['bg_color']['id']='IST022';
 		$this->i_methods['bg_color']['value']=$color;
 	}
-	private function footer_background_color($c)
+	function footer_background_color($c)
 	{
 		$color = color::get($c);
 		if($color=='')
@@ -776,7 +807,7 @@ class istyle
 		$this->i_methods['footer_background_color']['id']='IST001';
 		$this->i_methods['footer_background_color']['value']=$color;
 	}
-	private function underground_color($c)
+	function underground_color($c)
 	{
 		$color = color::get($c);
 		if($color=='')
@@ -788,7 +819,7 @@ class istyle
 		$this->i_methods['underground_color']['id']='IST007';
 		$this->i_methods['underground_color']['value']=$color;
 	}
-	private function font_color($c)
+	function font_color($c)
 	{
 		$color = color::get($c);
 		if($color=='')
