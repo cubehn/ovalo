@@ -795,7 +795,7 @@ class istyle
 		$this->i_methods['bg_color']['id']='IST022';
 		$this->i_methods['bg_color']['value']=$color;
 	}
-	function footer_background_color($c)
+	function bg_color_footer($c)
 	{
 		$color = color::get($c);
 		if($color=='')
@@ -803,9 +803,9 @@ class istyle
 			//sentinel::registerER('line_header [color]',config::$parameters['Language'],22);
 			return '';
 		}
-		$this->i_methods['footer_background_color']['property']='backgroundColor';
-		$this->i_methods['footer_background_color']['id']='IST001';
-		$this->i_methods['footer_background_color']['value']=$color;
+		$this->i_methods['bg_color_footer']['property']='bg_color_footer';
+		$this->i_methods['bg_color_footer']['id']='IST001';
+		$this->i_methods['bg_color_footer']['value']=$color;
 	}
 	function underground_color($c)
 	{
@@ -837,12 +837,19 @@ class istyle
 		$this->i_methods['narrow_footer']['id']='IST016';
 		$this->i_methods['narrow_footer']['value']='0';
 	}
-	function footer_line($w,$c='black',$t='solid')
+	function line_footer($w,$c='',$t='solid')
 	{
-		$rt = $w.'px '.$t.' '.$c;
-		$this->i_methods['footer_line']['property']='footer_line';
-		$this->i_methods['footer_line']['id']='IST017';
-		$this->i_methods['footer_line']['value']=$rt;
+		if($c=='') $c = color::name('black');
+		$color = color::get($c);
+		if($color=='')
+		{
+			//sentinel::registerER('line_header [color]',config::$parameters['Language'],22);
+			return '';
+		}
+		$rt = $w.'px '.$t.' '.$color;
+		$this->i_methods['line_footer']['property']='line_footer';
+		$this->i_methods['line_footer']['id']='IST017';
+		$this->i_methods['line_footer']['value']=$rt;
 	}
 	function bold_title($c)
 	{
@@ -868,12 +875,11 @@ class istyle
 		$this->i_methods['bold_header']['id']='IST043';
 		$this->i_methods['bold_header']['value']=$b;
 	}
-	function footer_justify()
+	function justify_footer()
 	{
-		$this->i_methods['footer_justify']['property']='footer_justify';
-		$this->i_methods['footer_justify']['id']='IST018';
-		$this->i_methods['footer_justify']['value']='';
-		//$this->i_methods['footer_justify']='display: flex;justify-content: space-between;';
+		$this->i_methods['justify_footer']['property']='justify_footer';
+		$this->i_methods['justify_footer']['id']='IST018';
+		$this->i_methods['justify_footer']['value']='';
 	}
 	function shadow_title($ins,$c='')
 	{

@@ -896,30 +896,37 @@ class style
 		$this->i_methods['narrow_footer']='padding:0;';
 	}
 
-	function footer_background_color($c)
+	function bg_color_footer($c)
 	{
 		$color = color::get($c);
 		if($color=='')
 		{
-			sentinel::registerER('footer_background_color [color]',config::$parameters['Language'],22);
+			sentinel::registerER('bg_color_footer [color]',config::$parameters['Language'],22);
 			return '';
 		}
-		$this->i_methods['footer_background_color']='background-color: '.$color.';';
+		$this->i_methods['bg_color_footer']='background-color: '.$color.';';
 	}
 
-	function footer_line($w,$c='black',$t='solid')
+	function line_footer($w,$c='',$t='solid')
 	{
+		if($c=='') $c = color::name('black');
+		$color = color::get($c);
+		if($color=='')
+		{
+			sentinel::registerER('line_footer [color]',config::$parameters['Language'],22);
+			return '';
+		}
 		if(!in_array($t,keys::$sectionsCommands['borderStyles']))
 		{
-			sentinel::registerER('footer_line ['."$t".']',config::$parameters['Language'],17);
+			sentinel::registerER('line_footer ['."$t".']',config::$parameters['Language'],17);
 			return '';
 		}
-		$this->i_methods['footer_line']='border-top:'.$w.'px '.$t.' '.$c.';';	
+		$this->i_methods['line_footer']='border-top:'.$w.'px '.$t.' '.$color.';';	
 	}
 
-	function footer_justify()
+	function justify_footer()
 	{
-		$this->i_methods['footer_justify']='display: flex;justify-content: space-between;';
+		$this->i_methods['justify_footer']='display: flex;justify-content: space-between;';
 	}
 
 
@@ -935,7 +942,7 @@ class style
 		$this->i_methods['spacing']=$c;
 	}
 
-
+	//esto deberia estar en los estilos de los actions.... CAMBIAR!!
 	function btn_color_Bootstrap($c,$t=0){
 		$r='';
 		if(!in_array($c, keys::$actionsCommands['bootstrapColor']))

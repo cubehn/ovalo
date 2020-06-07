@@ -152,9 +152,9 @@ class keys{
 					//FOOTER
 					['border_radius_footer','f'],
 					['narrow_footer','f'],
-					['footer_background_color','f'],
-					['footer_line','f'],
-					['footer_justify','f'],
+					['bg_color_footer','f'],
+					['line_footer','f'],
+					['justify_footer','a'],
 
 					//CONSTRUCT
 					['font_color',''],

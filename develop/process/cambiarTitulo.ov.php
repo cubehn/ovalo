@@ -7,7 +7,7 @@
     $sec1 = ovalo::section('sec1');
 
 
-	$sec1->properties->title='Nuevo titulo';
+	
 	$sec1->style->justify_header();
 	$sec1->style->line_header(2,color::name('red'),'dotted');
 	$sec1->style->bg_color_header(color::hexa('FFDDFF'));
@@ -40,5 +40,13 @@
 	$sec1->style->bg_image('f15.jpg','cover');
 	$sec1->style->underground_color(color::name('silver'));
 	$sec1->style->border_radius(4,0,0,1,1);
+	$sec1->style->narrow();
+	$sec1->style->font('Times New Roman');
+	$sec1->style->font_size(22);
+	$sec1->style->font_color(color::name('lime'));
+	$sec1->style->justify_footer();
+	$sec1->style->narrow_footer();
+	$sec1->style->bg_color_footer(color::name('green'));
+	$sec1->style->line_footer(3,color::name('brown'));
 
 ?>

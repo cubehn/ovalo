@@ -121,15 +121,15 @@ function exec_process2(n,p,cap=''){
 						case 'IST005':document.getElementById("cont"+fields[0]).style.backgroundSize=fields[2];break;
 						case 'IST006':document.getElementById("b"+fields[0]).style.padding=fields[2];break;
 						case 'IST007':document.getElementById("main"+fields[0]).style.backgroundColor=fields[2];break;
-						case 'IST008':document.getElementById("b"+fields[0]).style.fontFamily=fields[2];break;
-						case 'IST009':document.getElementById("b"+fields[0]).style.fontSize=fields[2];break;
+						case 'IST008':document.getElementById(fields[0]).style.fontFamily=fields[2];break;
+						case 'IST009':document.getElementById(fields[0]).style.fontSize=fields[2];break;
 						case 'IST010':document.getElementById("t"+fields[0]).style.fontFamily=fields[2];break;
 						case 'IST011':document.getElementById("t"+fields[0]).style.fontSize=fields[2];break;
 						case 'IST012':document.getElementById("s"+fields[0]).style.fontFamily=fields[2];break;
 						case 'IST013':document.getElementById("s"+fields[0]).style.fontSize=fields[2];break;
 						case 'IST014':document.getElementById("h"+fields[0]).style.display="flex";document.getElementById("h"+fields[0]).style.justifyContent="space-between";break;
 						case 'IST015':document.getElementById("h"+fields[0]).style.borderBottom=fields[2];break;
-						case 'IST016':document.getElementById("a"+fields[0]).style.padding=fields[2];break;
+						case 'IST016':document.getElementById("f"+fields[0]).style.padding=fields[2];break;
 						case 'IST017':document.getElementById("f"+fields[0]).style.borderTop=fields[2];break;
 						case 'IST018':document.getElementById("a"+fields[0]).style.display="flex";document.getElementById("a"+fields[0]).style.justifyContent="space-between";break;
 						case 'IST019':document.getElementById("cont"+fields[0]).style.borderRadius=fields[2];break;

@@ -18,6 +18,7 @@ $sec3 = new section('sec3');
 $sec4 = new section('sec4');
 $act1 = new action('act1');
 $act2 = new action('act2');
+$act3 = new action('act3');
 
 //--------------------------------------------------------------
 //CUERPO
@@ -31,10 +32,15 @@ $act1->event->click('cambiarTitulo');
 
 $act2->event->click('cambiarTitulo');
 
+
+$act3->properties->type=NORMAL;
+$act3->properties->caption='Cancelar';
+
 $sec1->properties->type=NORMAL;
 $sec1->properties->header='Header'.$act2->paint();
-$sec1->properties->title='Titulo';
+$sec1->properties->title=icon::get('id-card').' Titulo';
 $sec1->properties->subtitle='SubTitulo.';
+$sec1->embed()->script('Parrafo de prueba para ver los efectos de los estilos.');
 
 $c1=color::rgba(124);
 $c2=color::hexa('FFDDFF');
@@ -76,11 +82,20 @@ $sec1->properties->warning='mensaje de warning';*/
 //$sec1->style->bg_image('f15.jpg','cover');
 //$sec1->style->underground_color(color::name('silver'));
 //$sec1->style->border_radius(4);
+//$sec1->style->narrow();
+//$sec1->style->font('Times New Roman');
+//$sec1->style->font_size(22);
+//$sec1->style->font_color(color::name('lime'));
+//$sec1->style->justify_footer();
+//$sec1->style->narrow_footer();
+//$sec1->style->bg_color_footer(color::name('green'));
+//$sec1->style->line_footer(3,color::name('brown'));
 
 //--------------------------------------------------------------
 //ESTRUCTURA, ASOCIACIONES
 
 $sec1->addAction($act1);
+$sec1->addAction($act3);
 
 
 $shade->addSection($sec1);
