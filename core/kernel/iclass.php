@@ -323,6 +323,7 @@ class section_properties{
 	public $title;
 	public $subtitle;
 	public $header;
+	public $video;
 	public $alert;
 	public $error;
 	public $warning;

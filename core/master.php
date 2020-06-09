@@ -530,6 +530,12 @@ class video{
 		$i=ovalo::OVreepNDDJ('aspect',$a,$i);
 		return $i;	
 	}
+	static function vimeo($n,$a='21by9'){
+		$i=ovalo::OVextractNDDJ_SH(Directory::get()['system'].'/video.sys.php','video.sys.php');
+		$i=ovalo::OVreepNDDJ('url','https://player.vimeo.com/video/'.$n,$i);
+		$i=ovalo::OVreepNDDJ('aspect',$a,$i);
+		return $i;	
+	}
 	static function get($n){
 		$i=ovalo::OVextractNDDJ_SH(Directory::get()['system'].'/video.sys.php','video.sys.php');
 		$i=ovalo::OVreepNDDJ('url',$n,$i);

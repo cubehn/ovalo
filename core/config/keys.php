@@ -86,6 +86,7 @@ class keys{
 					['title','text'],
 					['header','text'],
 					['subtitle','text'],
+					['video','text'],
 					['alert','text'],
 					['error','text'],
 					['warning','text'],
