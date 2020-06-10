@@ -31,30 +31,47 @@ $act1->properties->type=NORMAL;
 $act1->properties->caption='Aceptar';
 $act1->event->click('cambiarTitulo');
 
+$act2->properties->type=NORMAL;
+$act2->properties->caption='Cambiar Video 2';
+$act2->event->click('cambioVideo');
 
-$act2->event->click('cambiarTitulo');
-
-
-$act3->properties->type=NORMAL;
-$act3->properties->caption='Cancelar';
 
 $sec1->properties->type=NORMAL;
-//$sec1->properties->video='https://mdbootstrap.com/img/video/animation.mp4';
-$sec1->properties->video='https://mdbootstrap.com/img/video/Lines.mp4';
+$sec1->properties->video='https://mdbootstrap.com/img/video/animation-intro.mp4';
 
-$sec1->properties->header='Header';
+
+$sec1->properties->header='Section 1';
 $sec1->properties->title=icon::get('id-card').' Titulo';
 $sec1->properties->subtitle='SubTitulo.';
 $sec1->embed()->script('No hay ninguna propiedad específica para alinear elementos de bloque en CSS2. Se han venido usando diversas técnicas como la del valor auto para los márgenes horizontales que nos permite alinear en esa dirección. Otra forma es dar al elemento de bloque hijo el valor inline-block en su propiedad display. Así podemos dimensionarlo y obedecerá la alineación de elementos Inline que vimos en temas anteriores. Usando text-align para el bloque padre y vertical-align para el bloque hijo conseguimos, con ciertas limitaciones, alinear en ambas direcciones.'
 );
-$sec1->style->font_color_header(color::name('white'));
-$sec1->style->font_color_title(color::name('white'));
-$sec1->style->font_color_subtitle(color::name('white'));
-$sec1->style->font_color(color::name('white'));
-$sec1->style->bg_color(color::name('transparent'));
-$sec1->properties->alert='SubTitulo.';
-$sec1->width(12);
+$sec1->style->font_color_header(color::name('black'));
+$sec1->style->font_color_title(color::name('black'));
+$sec1->style->font_color_subtitle(color::name('black'));
+$sec1->style->font_color(color::name('black'));
+$sec1->width(6);
 $sec1->height(12);
+$sec1->properties->alert='inicio';
+
+$sec2->properties->type=NORMAL;
+//$sec2->properties->video='https://mdbootstrap.com/img/video/Lines.mp4';
+//../develop/resources/videos/Bootstrap Video1.mp4
+$sec2->properties->video='../develop/resources/videos/Bootstrap Video1.mp4';
+//$sec2->properties->video='https://mdbootstrap.com/img/video/animation.mp4';
+
+$sec2->properties->header='Header';
+$sec2->properties->title=icon::get('id-card').' Titulo';
+$sec2->properties->subtitle='SubTitulo.';
+$sec2->embed()->script('No hay ninguna propiedad específica para alinear elementos de bloque en CSS2. Se han venido usando diversas técnicas como la del valor auto para los márgenes horizontales que nos permite alinear en esa dirección. Otra forma es dar al elemento de bloque hijo el valor inline-block en su propiedad display. Así podemos dimensionarlo y obedecerá la alineación de elementos Inline que vimos en temas anteriores. Usando text-align para el bloque padre y vertical-align para el bloque hijo conseguimos, con ciertas limitaciones, alinear en ambas direcciones.'
+);
+$sec2->style->font_color_header(color::name('white'));
+$sec2->style->font_color_title(color::name('white'));
+$sec2->style->font_color_subtitle(color::name('white'));
+$sec2->style->font_color(color::name('white'));
+$sec2->width(6);
+$sec2->height(12);
+
+
 /*
 'TEST: '.icon::get('file-text').
 video::vimeo('137857207')*/
@@ -112,10 +129,13 @@ $sec1->properties->warning='mensaje de warning';*/
 //ESTRUCTURA, ASOCIACIONES
 
 $sec1->addAction($act1);
-$sec1->addAction($act3);
+$sec1->addAction($act2);
 
 
 $shade->addSection($sec1);
+$shade->addSection($sec2);
+
+
 
 
 

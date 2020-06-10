@@ -369,6 +369,18 @@ class isec
 		if(isset($this->properties->subtitle))
 		$ps = $ps.$this->section_name.';IPR003;'.$this->properties->subtitle.'|';
 
+		if(isset($this->properties->video))
+		$ps = $ps.$this->section_name.';IPR006;'.$this->properties->video.'|';
+
+		if(isset($this->properties->alert))
+		$ps = $ps.$this->section_name.';IPR007;'.$this->properties->alert.'|';
+
+		if(isset($this->properties->warning))
+		$ps = $ps.$this->section_name.';IPR008;'.$this->properties->warning.'|';
+
+		if(isset($this->properties->error))
+		$ps = $ps.$this->section_name.';IPR009;'.$this->properties->error.'|';
+
 		if(isset($this->width))
 		$ps = $ps.$this->section_name.';IPR004;'.$this->width.'|';
 		if(isset($this->height))
@@ -497,8 +509,11 @@ class isection_properties{
 	public $title;
 	public $subtitle;
 	public $header;
-	public $bg;
+	public $video;
 	public $debug;
+	public $alert;
+	public $warning;
+	public $error;
 }
 
 class istyle

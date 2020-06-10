@@ -1080,6 +1080,7 @@ class section
 		//valores por defecto para las propiedades
 		
 		$this->properties->type=NORMAL;
+		$this->style->bg_color(color::name('Transparent'));
 		if(config::$parameters['DebugMode'])
 		{
 			$this->properties->debug='1';	

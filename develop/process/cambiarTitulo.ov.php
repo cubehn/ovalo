@@ -7,8 +7,8 @@
     $sec1 = ovalo::section('sec1');
 
 
-	
-	$sec1->style->justify_header();
+	$sec1->properties->video='https://mdbootstrap.com/img/video/Lines.mp4';
+	/*$sec1->style->justify_header();
 	$sec1->style->line_header(2,color::name('red'),'dotted');
 	$sec1->style->bg_color_header(color::hexa('FFDDFF'));
 	$sec1->style->font_title('Times New Roman');
@@ -47,6 +47,6 @@
 	$sec1->style->justify_footer();
 	$sec1->style->narrow_footer();
 	$sec1->style->bg_color_footer(color::name('green'));
-	$sec1->style->line_footer(3,color::name('brown'));
+	$sec1->style->line_footer(3,color::name('brown'));*/
 
 ?>

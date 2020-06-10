@@ -177,6 +177,18 @@ function exec_process2(n,p,cap=''){
 						case 'IPR005':
 							document.getElementById("main"+fields[0]).style.height=fields[2];
 							break;
+						case 'IPR006':
+							document.getElementById("v"+fields[0]).src=fields[2];
+							break;
+						case 'IPR007':
+							//document.getElementById("ala"+fields[0]).innerHTML=fields[2];
+							break;
+						case 'IPR008':
+							//document.getElementById("ala"+fields[0]).innerHTML=fields[2];
+							break;
+						case 'IPR009':
+							//document.getElementById("ala"+fields[0]).innerHTML=fields[2];
+							break;
 						case 'SEV001':
 							setTimeout(function(){bbprocess('exec_process2:'+fields[0]+'|','eventObjs','encabez');},fields[2]);
 							break;
