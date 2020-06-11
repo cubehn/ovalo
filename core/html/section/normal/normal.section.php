@@ -1,10 +1,10 @@
 <div id="main[[id]]" class="[[width]] pb-3 px-2">
-	<div id="cont[[id]]" class="[[s_head]]" style=" overflow: hidden; [[height]]">
+	<div id="cont[[id]]" class="[[s_head]]" style="[[height]]">
 		[[header]]
 		[[alert]][[warning]][[error]]
 		[[video]]
-		<div id="b[[id]]" class="[[s_body]]">
-			<div id="e[[id]]" style="[[align]]">
+		<div id="b[[id]]" class="[[s_body]]" style="overflow: auto;">
+			<div id="e[[id]]">
 			[[title]]
 			[[subtitle]]
 			</div>

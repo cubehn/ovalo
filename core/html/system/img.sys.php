@@ -1,1 +1,1 @@
-<img src='[[img]]' [[width]] class='img-fluid'>
+<img src='[[img]]' [[width]] class='[[type]]'>

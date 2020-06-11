@@ -32,10 +32,48 @@ define("ACTION_SPLIT","ACTION_SPLIT");
 define("ACTION_FLAT","ACTION_FLAT");
 define("ACTION_PANEL","ACTION_PANEL");
 
-
+//Para los eventos del section, con esto se especifica el objeto destino 
 define("FOOTER",'f');
 define("HEADER",'h');
 define("BODY",'b');
+
+
+
+define("PUBLIC_SHADE",0);
+define("PRIVATE_SHADE",1);
+
+/* SECTIONS */
+define("NORMAL", "normal");
+define("NML", "normal");
+define("TAB", "tab");
+define("MODAL", "modal");
+define("MDL", "modal");
+define("PILLS", "pills");
+define("PLS", "pills");
+define("CLP", "collapse");
+define("COLLAPSE", "collapse");
+define("PARALLAX", "parallax");
+define("PRX", "parallax");
+define("CAROUSEL","carousel");
+define("CRL","carousel");
+
+/* ACTIONS */
+define("GROUP", "group");
+define("GRP", "group");
+define("DROPDOWN", "dropdown");
+define("DPW", "dropdown");
+define("SPLIT", "split");
+define("SLT", "split");
+define("FLAT", "flat");
+define("FLT", "flat");
+define("BUTTON", "button");
+define("BTN", "button");
+define("PANEL", "panel");
+define("PNL", "panel");
+/* OVERFLOW */
+define("of_auto","auto");
+define("of_hide","hidden");
+
 /*---------------------------------------------------
 	Globals Configurations
 ---------------------------------------------------*/

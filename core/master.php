@@ -8,40 +8,6 @@ use core\sentinel\sentinel;
 sentinel::add(__FILE__);
 
 
-define("PUBLIC_SHADE",0);
-define("PRIVATE_SHADE",1);
-
-/* SECTIONS */
-define("NORMAL", "normal");
-define("NML", "normal");
-define("TAB", "tab");
-define("MODAL", "modal");
-define("MDL", "modal");
-define("PILLS", "pills");
-define("PLS", "pills");
-define("CLP", "collapse");
-define("COLLAPSE", "collapse");
-define("PARALLAX", "parallax");
-define("PRX", "parallax");
-define("CAROUSEL","carousel");
-define("CRL","carousel");
-
-/* ACTIONS */
-define("GROUP", "group");
-define("GRP", "group");
-define("DROPDOWN", "dropdown");
-define("DPW", "dropdown");
-define("SPLIT", "split");
-define("SLT", "split");
-define("FLAT", "flat");
-define("FLT", "flat");
-define("BUTTON", "button");
-define("BTN", "button");
-define("PANEL", "panel");
-define("PNL", "panel");
-/* OVERFLOW */
-define("of_auto","auto");
-define("of_hide","hidden");
 class Control{
 	private static $idShades;
 	private static $idSections;
@@ -548,11 +514,20 @@ class resources{
 		$i=ovalo::OVreepNDDJ('url',Directory::get()['resources'].'videos/'.$n,$i);
 		return $i;
 	}
-	static function getImage($n,$width){
+	static function getImage($n,$width='',$type=''){
+		if($width=='') $width='100%';
 		$n='../develop/resources/images/'.$n;
 		$i=ovalo::OVextractNDDJ_SH(Directory::get()['system'].'/img.sys.php','img.sys.php');
 		$i=ovalo::OVreepNDDJ('img',$n,$i);
 		$i=ovalo::OVreepNDDJ('width','width="'.$width.'"',$i);
+		if($type=='bordered'){
+			$type='img-thumbnail';
+		}else{
+			if($type=='rounded') $type='rounded img-fluid';
+			else $type='img-fluid';
+		}
+		
+		$i=ovalo::OVreepNDDJ('type',$type,$i);
 		
 		return $i;
 	}
