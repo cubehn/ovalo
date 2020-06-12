@@ -90,10 +90,11 @@ function hideSection(s,bsec='',cap=''){
 	}
 }
 function switchSection(s1,s2,cap=''){
-	te1=document.getElementById('main'+s1).innerHTML;
-	te2=document.getElementById('main'+s2).innerHTML;
-	document.getElementById('main'+s2).innerHTML=te1;
-	document.getElementById('main'+s1).innerHTML=te2;
+	var uno = $("#main"+s1).contents();
+	var dos = $("#main"+s2).contents();
+	$("#main"+s1).append(dos);
+	$("#main"+s2).append(uno);
+
 	if(cap!=''){
 		bbprocess(cap,'eventObjs');
 	}
@@ -199,7 +200,10 @@ function exec_process2(n,p,cap=''){
 							bbprocess(fields[0],'eventObjs');
 							break;
 						case 'SEV004':
-							call(fields[0]);
+							call(fields[0]); // analizar si necesitar ejecutar el "cap"
+							break;
+						case 'SEV005':
+							switchSection(fields[0],fields[2],cap);
 							break;
 					}
 	    		}

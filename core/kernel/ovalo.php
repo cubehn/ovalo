@@ -357,6 +357,25 @@ class isec
 		$this->hide='';
 		$this->flow='';
 	}
+	function switchSections($newSec,$withme='')
+	{
+		if($withme=='')
+		{
+			if($this->section_name!=$newSec)
+			{
+				$this->i_newsec=$newSec;
+				$this->i_withme=$withme;		
+			}
+		}
+		else{
+			if($withme!=$newSec)
+			{
+				$this->i_newsec=$newSec;
+				$this->i_withme=$withme;
+			}
+		}
+		
+	}
 	function getProperties(){
 		$ps = '';
 
@@ -391,6 +410,17 @@ class isec
 		$ps = $ps.$this->flow.';SEV003;'.$this->section_name.'|';
 		if(isset($this->i_include))
 		$ps = $ps.$this->section_name.';SEV004;'.$this->section_name.'|';
+		if(isset($this->i_newsec))
+		{
+			if($this->i_withme=='')
+			{
+				$ps = $ps.$this->section_name.';SEV005;'.$this->i_newsec.'|';
+			}
+			else
+			{
+				$ps = $ps.$this->i_withme.';SEV005;'.$this->i_newsec.'|';
+			}
+		}
 
 		return $ps;
 	}
@@ -519,6 +549,7 @@ class isection_properties{
 class istyle
 {
 	private $i_methods;
+
 	function bg_image($img,$type='')
 	{
 		$rt = Directory::get()['image'].$img;
