@@ -272,6 +272,30 @@ class Shade{
 
 		return $ev;
 	}
+
+	function extractEvents($is)
+	{
+		$ev = '';
+		if($is->getEventsObjects()<>''){
+			foreach ($is->getEventsObjects() as $eo) { // por cada section dentro del shade
+				$ev = $ev.$this->eventsPrepare($eo,$s->g_name());
+				foreach ($is->getActions() as $eo2) { // por cada action dentro del section
+					foreach ($eo2->getEventsObjects() as $eo3) { //por cada event de cada action
+						$ev = $ev.$this->eventsPrepare($eo3,$eo2->g_name());
+					}
+				}
+			}
+		}else{
+			foreach ($is->getActions() as $eo2) { // por cada action dentro del section
+				if($eo2->getEventsObjects()<>''){
+					foreach ($eo2->getEventsObjects() as $eo3) { //por cada event de cada action
+						$ev = $ev.$this->eventsPrepare($eo3,$eo2->g_name());
+					}
+				}
+			}
+		}
+		return $ev;
+	}
 	function begin($devSpot=0){
 		$init_secs='';
 		$style='';
@@ -289,31 +313,28 @@ class Shade{
 				$init_secs=$init_secs.$s->gEmptySections();//.'&'.$s->g_Name();
 				$s->eventProcess();
 				if($s->getEventScript()<>''){
+					//REVISAR ESTO!!
 					if(isset($s->getEventScript()['visible']))$this->ev['visible']=$this->ev['visible'].' '.$s->getEventScript()['visible'];
 					if(isset($s->getEventScript()['noVisible']))$this->ev['noVisible']=$this->ev['noVisible'].' '.$s->getEventScript()['noVisible'];
 					if(isset($s->getEventScript()['sizeMinor']))$this->ev['sizeMinor']=$this->ev['sizeMinor'].' '.$s->getEventScript()['sizeMinor'];
 					if(isset($s->getEventScript()['sizeHigher']))$this->ev['sizeHigher']=$this->ev['sizeHigher'].' '.$s->getEventScript()['sizeHigher'];
 					if(isset($s->getEventScript()['load']))$this->ev['load']=$this->ev['load'].' '.$s->getEventScript()['load'];
 				}
+
+
 				//eventos de sections y actions
-				if($s->getEventsObjects()<>''){
-					foreach ($s->getEventsObjects() as $eo) { // por cada section dentro del shade
-						$ev = $ev.$this->eventsPrepare($eo,$s->g_name());
-						foreach ($s->getActions() as $eo2) { // por cada action dentro del section
-							foreach ($eo2->getEventsObjects() as $eo3) { //por cada event de cada action
-								$ev = $ev.$this->eventsPrepare($eo3,$eo2->g_name());
-							}
-						}
-					}
-				}else{
-					foreach ($s->getActions() as $eo2) { // por cada action dentro del section
-						if($eo2->getEventsObjects()<>''){
-							foreach ($eo2->getEventsObjects() as $eo3) { //por cada event de cada action
-								$ev = $ev.$this->eventsPrepare($eo3,$eo2->g_name());
-							}
-						}
+				//de los section internos
+				if($s->hasInternalSections())
+				{
+					foreach ($s->getSections() as $is)
+					{
+						$ev=$ev.$this->extractEvents($is);
 					}
 				}
+				//del section externo
+				$ev=$ev.$this->extractEvents($s);
+
+
 			}
 			$init_secs=substr($init_secs,1);		
 		}

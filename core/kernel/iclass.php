@@ -181,6 +181,7 @@ class action{
 		$b = $b.$ib;
 		return $b;
 	}
+	//eventos de los actions
 	function getEventsObjects(){
 		$r = '';
 		if($this->event->get2()<>''){
@@ -1091,6 +1092,11 @@ class section
 	{
 		return $this->private_internal['actions'];
 	}
+	function getSections()
+	{
+		return $this->private_internal['sections'];
+	}
+
 	function getEventsObjects(){
 		$r = '';
 		if($this->event->get2()<>''){
@@ -1098,6 +1104,19 @@ class section
 		}
 		return $r;
 	}
+	/*function getEventsObjectsALL(){
+		$r='';
+			if(isset($this->private_internal['sections']))
+			{
+				foreach ($this->private_internal['sections'] as $s) 
+				{
+					$r=$s->getEventsObjects();
+					if($r<>'')break;
+				}
+			}
+		
+		return $r;
+	}*/
 	function eventProcess(){
 		if($this->event->get()<>'')
 		foreach($this->event->get() as $e){
@@ -1364,7 +1383,7 @@ class section
 	// SYSTEM METHOD
 	// Devuelve true/false si el section tiene sections internos
 	// .............................
-	private function hasInternalSections()
+	function hasInternalSections()
 	{
 		$ret = false;
 		$count_sec = $this->countInternalArray('sections');
@@ -1638,8 +1657,17 @@ class section
 		$r=ovalo::OVreepNDDJ("hide",$w,$r);
 
 		$w='';
-		if(isset($sec->i_height)) $w='height:'.$sec->i_height.';';
+		if(isset($sec->i_height)) 
+		{
+			$w='height:'.$sec->i_height.';';
+			$r=ovalo::OVreepNDDJ("of",'auto',$r);
+		}
+		else
+		{
+			$r=ovalo::OVreepNDDJ("of",'hidden',$r);
+		}
 		$r=ovalo::OVreepNDDJ("height",$w,$r);
+
 		$w='';
 		if(isset($sec->i_active)) $w=$sec->i_active;
 		$r=ovalo::OVreepNDDJ("active",$w,$r);

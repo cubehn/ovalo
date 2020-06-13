@@ -28,35 +28,35 @@ $shade->properties->title='Ocultar y Mostrar';
 
 
 $act1->properties->type=NORMAL;
-$act1->properties->caption='Mostrar Ocultos';
-$act1->event->click('mostrarSections');
+$act1->properties->caption='Externo';
+$act1->event->click('nuevoTitulo');
 
 $act2->properties->type=NORMAL;
-$act2->properties->caption='Ocultar';
-$act2->event->click('ocultarSections');
+$act2->properties->caption='Interno';
+$act2->event->click('nuevoTitulo');
 
 
 $sec1->properties->type=NORMAL;
-$sec1->properties->header='Header';
+$sec1->properties->header='Principal sec1';
 $sec1->properties->debug=0;
 $sec1->properties->title=icon::get('id-card').' Titulo';
 $sec1->properties->subtitle='SubTitulo.';
-$sec1->embed()->script('No hay ninguna propiedad específica para alinear elementos de bloque en CSS2. Se han venido usando diversas técnicas como la del valor auto para los márgenes horizontales que nos permite alinear en esa dirección. Otra forma es dar al elemento de bloque hijo el valor inline-block en su propiedad display. Así podemos dimensionarlo y obedecerá la alineación de elementos Inline que vimos en temas anteriores. Usando text-align para el bloque padre y vertical-align para el bloque hijo conseguimos, con ciertas limitaciones, alinear en ambas direcciones.'
-);
+$sec1->embed()->script('');
 
 $sec2->properties->title='sec2';
 $sec2->properties->debug=0;
 $sec2->embed()->script('El comando git fetch comunica con un repositorio remoto y obtiene toda la información que se encuentra en ese repositorio que no está en el tuyo actual y la almacena en tu base de datos local.
 
 En primer lugar, observamos este comando en Traer y Combinar Remotos y seguimos viendo ejemplos de su uso en Ramas Remotas.');
+$sec2->width(12);
+
 $sec3->properties->title='sec3';
 $sec3->properties->debug=0;
 $sec3->embed()->script('El comando git pull es básicamente una combinación de los comandos git fetch y git merge, donde Git descargará desde el repositorio remoto especificado y a continuación, de forma inmediata intentará combinarlo en la rama en la que te encuentres.');
 $sec4->properties->title='sec4';
 $sec4->properties->debug=0;
 $sec4->embed()->script('Por último, mencionamos muy rápidamente que se puede utilizar la opción --verify-signatures con el fin de verificar qué commits que estás descargando han sido firmados con GPG en Firmando Commits.');
-$sec4->hide();
-$sec2->hide();
+
 
 //--------------------------------------------------------------
 //ESTRUCTURA, ASOCIACIONES
@@ -65,10 +65,12 @@ $sec1->addAction($act1);
 $sec3->addAction($act2);
 
 
+$sec1->addSection($sec2);
+$sec1->addSection($sec3);
+$sec1->addSection($sec4);
+
 $shade->addSection($sec1);
-$shade->addSection($sec2);
-$shade->addSection($sec3);
-$shade->addSection($sec4);
+
 
 
 

@@ -3,7 +3,7 @@
 		[[header]]
 		[[alert]][[warning]][[error]]
 		[[video]]
-		<div id="b[[id]]" class="[[s_body]]" style="overflow: auto;">
+		<div id="b[[id]]" class="[[s_body]]" style="overflow: [[of]];">
 			<div id="e[[id]]">
 			[[title]]
 			[[subtitle]]
