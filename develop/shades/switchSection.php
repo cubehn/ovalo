@@ -24,7 +24,7 @@ $act3 = new action('act3');
 //--------------------------------------------------------------
 //CUERPO
 
-$shade->properties->title='Diseño1';
+$shade->properties->title='Switch Sections';
 
 
 $act1->properties->type=NORMAL;

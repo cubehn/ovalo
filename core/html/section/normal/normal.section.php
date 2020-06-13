@@ -1,4 +1,4 @@
-<div id="main[[id]]" class="[[width]] pb-3 px-2">
+<div id="main[[id]]" class="[[width]] pb-3 px-2" style="[[hide]]">
 	<div id="cont[[id]]" class="[[s_head]]" style="[[height]]">
 		[[header]]
 		[[alert]][[warning]][[error]]

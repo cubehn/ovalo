@@ -1280,6 +1280,12 @@ class section
 		}
 	}
 
+	function hide($v=1)
+	{
+		if($v!=1) $v=0;
+		$this->i_hide=$v;
+	}
+
 	// .............................
 	// SYSTEM METHOD
 	// Devuelve el html del Section
@@ -1623,6 +1629,14 @@ class section
 		//$w='';
 		//if(isset($sec->private_internal['c_of']->of)) $w=$sec->private_internal['c_of']->of;
 		//$r=ovalo::OVreepNDDJ("overflow",$w,$r);
+		$w='';
+		if(isset($sec->i_hide))
+		{
+			if($sec->i_hide==1)
+				$w='display:none;';
+		}
+		$r=ovalo::OVreepNDDJ("hide",$w,$r);
+
 		$w='';
 		if(isset($sec->i_height)) $w='height:'.$sec->i_height.';';
 		$r=ovalo::OVreepNDDJ("height",$w,$r);

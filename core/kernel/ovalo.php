@@ -450,7 +450,7 @@ class isec
 		$n=(100/12)*$h;
 		$this->height=$n.'%';
 	}
-	function hide($active){
+	function hide($active=1){
 		$_SESSION['ovsec'][$this->section_name]['hide']=$active;
 		if($active==1)
 		{

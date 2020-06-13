@@ -24,12 +24,16 @@ $act3 = new action('act3');
 //--------------------------------------------------------------
 //CUERPO
 
-$shade->properties->title='Diseño1';
+$shade->properties->title='Ocultar y Mostrar';
 
 
 $act1->properties->type=NORMAL;
-$act1->properties->caption='Mover';
-$act1->event->click('mover');
+$act1->properties->caption='Mostrar Ocultos';
+$act1->event->click('mostrarSections');
+
+$act2->properties->type=NORMAL;
+$act2->properties->caption='Ocultar';
+$act2->event->click('ocultarSections');
 
 
 $sec1->properties->type=NORMAL;
@@ -51,12 +55,14 @@ $sec3->embed()->script('El comando git pull es básicamente una combinación de 
 $sec4->properties->title='sec4';
 $sec4->properties->debug=0;
 $sec4->embed()->script('Por último, mencionamos muy rápidamente que se puede utilizar la opción --verify-signatures con el fin de verificar qué commits que estás descargando han sido firmados con GPG en Firmando Commits.');
+$sec4->hide();
+$sec2->hide();
 
 //--------------------------------------------------------------
 //ESTRUCTURA, ASOCIACIONES
 
 $sec1->addAction($act1);
-
+$sec3->addAction($act2);
 
 
 $shade->addSection($sec1);
