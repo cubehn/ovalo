@@ -1,5 +1,5 @@
 <div id="main[[id]]" class="[[width]] pb-3 px-2" style="[[hide]]">
-	<div id="cont[[id]]" class="[[s_head]]" style="[[height]]">
+	<div id="cont[[id]]" class="[[s_head]]" style="overflow: hidden; [[height]]">
 		[[header]]
 		[[alert]][[warning]][[error]]
 		[[video]]

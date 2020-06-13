@@ -163,12 +163,15 @@ function exec_process2(n,p,cap=''){
 						case 'IST046':document.getElementById("h"+fields[0]).style.textShadow=fields[2];break;
 						case 'IST047':document.getElementById("h"+fields[0]).style.color=fields[2];break;
 						case 'IPR001':
+							if(fields[2]!='')
 							document.getElementById("t"+fields[0]).innerHTML=fields[2];
 							break;
 						case 'IPR002':
+							if(fields[2]!='')
 							document.getElementById("h"+fields[0]).innerHTML=fields[2];
 							break;
 						case 'IPR003':
+							if(fields[2]!='')
 							document.getElementById("s"+fields[0]).innerHTML=fields[2];
 							break;
 						case 'IPR004':

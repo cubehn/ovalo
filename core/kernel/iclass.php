@@ -1079,8 +1079,9 @@ class section
 		$this->style = new style('section');
 
 		//valores por defecto para las propiedades
-		
 		$this->properties->type=NORMAL;
+		$this->properties->title='';
+		$this->properties->subtitle='';
 		$this->style->bg_color(color::name('Transparent'));
 		if(config::$parameters['DebugMode'])
 		{

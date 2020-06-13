@@ -24,16 +24,16 @@ $act3 = new action('act3');
 //--------------------------------------------------------------
 //CUERPO
 
-$shade->properties->title='Ocultar y Mostrar';
+$shade->properties->title='Sections Internos';
 
 
 $act1->properties->type=NORMAL;
 $act1->properties->caption='Externo';
-$act1->event->click('nuevoTitulo');
+$act1->event->click('externo');
 
 $act2->properties->type=NORMAL;
 $act2->properties->caption='Interno';
-$act2->event->click('nuevoTitulo');
+$act2->event->click('interno');
 
 
 $sec1->properties->type=NORMAL;
@@ -41,9 +41,17 @@ $sec1->properties->header='Principal sec1';
 $sec1->properties->debug=0;
 $sec1->properties->title=icon::get('id-card').' Titulo';
 $sec1->properties->subtitle='SubTitulo.';
-$sec1->embed()->script('');
+$sec1->style->font_color(color::name('white'));
+$sec2->style->font_color(color::name('gray'));
+$sec2->style->shadow();
 
+$sec2->properties->video='https://mdbootstrap.com/img/video/Lines.mp4';
+$sec3->properties->video='https://mdbootstrap.com/img/video/Lines.mp4';
+$sec4->properties->video='https://mdbootstrap.com/img/video/Lines.mp4';
+
+$sec2->properties->header='Inicio';
 $sec2->properties->title='sec2';
+$sec2->properties->subtitle='probando 1 2 3';
 $sec2->properties->debug=0;
 $sec2->embed()->script('El comando git fetch comunica con un repositorio remoto y obtiene toda la información que se encuentra en ese repositorio que no está en el tuyo actual y la almacena en tu base de datos local.
 
