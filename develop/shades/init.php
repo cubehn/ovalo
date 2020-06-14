@@ -58,9 +58,15 @@ $sec2->embed()->script('El comando git fetch comunica con un repositorio remoto 
 En primer lugar, observamos este comando en Traer y Combinar Remotos y seguimos viendo ejemplos de su uso en Ramas Remotas.');
 $sec2->width(12);
 
+$sec3->properties->type=MODAL;
+$sec3->properties->header='Section Modal';
 $sec3->properties->title='sec3';
 $sec3->properties->debug=0;
 $sec3->embed()->script('El comando git pull es básicamente una combinación de los comandos git fetch y git merge, donde Git descargará desde el repositorio remoto especificado y a continuación, de forma inmediata intentará combinarlo en la rama en la que te encuentres.');
+$sec3->style->justify_footer();
+$sec3->style->line_header(0);
+$sec3->style->shadow();
+
 $sec4->properties->title='sec4';
 $sec4->properties->debug=0;
 $sec4->embed()->script('Por último, mencionamos muy rápidamente que se puede utilizar la opción --verify-signatures con el fin de verificar qué commits que estás descargando han sido firmados con GPG en Firmando Commits.');

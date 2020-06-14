@@ -1,1 +1,1 @@
-<h5 class="[[s_title]]" id="exampleModalCenterTitle" style="[[font_color_title]]">[[property]]</h5>
+<div id="t[[id]]" class="[[s_title]]">[[property]]</div>

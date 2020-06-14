@@ -3,8 +3,8 @@
     use core\kernel\ovalo;
 
 
-    $sec2 = ovalo::section('sec2');
+    $sec3 = ovalo::section('sec3');
 
-    $sec2->switchSections('sec4');
+    $sec3->hide(0);
     
 ?>

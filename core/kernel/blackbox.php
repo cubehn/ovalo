@@ -90,14 +90,30 @@ function hideSection(s,bsec='',cap=''){
 	}
 }
 function switchSection(s1,s2,cap=''){
-	var uno = $("#main"+s1).contents();
-	var dos = $("#main"+s2).contents();
-	$("#main"+s1).append(dos);
-	$("#main"+s2).append(uno);
+	var uno = $("#"+objPrincipal(s1)+s1).contents();
+	var dos = $("#"+objPrincipal(s2)+s2).contents();
+	$("#"+objPrincipal(s1)+s1).append(dos);
+	$("#"+objPrincipal(s2)+s2).append(uno);
 
 	if(cap!=''){
 		bbprocess(cap,'eventObjs');
 	}
+}
+function objPrincipal(s){
+	r='';
+	e=document.getElementById('main'+s);
+	e1=document.getElementById('main_c'+s);
+	e2=document.getElementById('mod'+s);
+	if(typeof(e) != 'undefined' && e != null){
+		r='main';
+	}
+	if(typeof(e1) != 'undefined' && e1 != null){
+		r='main_c';
+	}
+	if(typeof(e2) != 'undefined' && e2 != null){
+		r='mod';
+	}
+	return r;
 }
 function exec_process2(n,p,cap=''){
 	$.ajax({
