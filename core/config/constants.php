@@ -22,6 +22,7 @@ define("SECTION_COLLAPSE","SECTION_COLLAPSE");
 define("SECTION_BUTTON","SECTION_BUTTON");
 define("SECTION_PARALLAX","SECTION_PARALLAX");
 define("SECTION_CAROUSEL","SECTION_CAROUSEL");
+define("SECTION_WINDOW","SECTION_WINDOW");
 define("BLANK","BLANK");
 define("INITIAL","INITIAL");
 
@@ -56,6 +57,8 @@ define("PARALLAX", "parallax");
 define("PRX", "parallax");
 define("CAROUSEL","carousel");
 define("CRL","carousel");
+define("WINDOW","window");
+define("WIN","window");
 
 /* ACTIONS */
 define("GROUP", "group");

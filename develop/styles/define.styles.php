@@ -11,6 +11,14 @@ Visualization::define(SECTION_NORMAL,[
 	's_subtitle'=>'card-subtitle mb-2',
 	's_actions' => 'card-footer'
 ]);
+Visualization::define(SECTION_WINDOW,[
+	's_head'=>'card',
+	's_body'=>'card-body',
+	's_header'=>'card-header',
+	's_title'=>'card-title',
+	's_subtitle'=>'card-subtitle mb-2',
+	's_actions' => 'card-footer'
+]);
 
 Visualization::define(SECTION_CAROUSEL,[
 	's_head'=>'card',

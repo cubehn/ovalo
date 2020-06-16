@@ -74,7 +74,8 @@ class keys{
 					'button',
 					'carousel',
 					'parallax',
-					'portlet'
+					'portlet',
+					'window'
 				],
 				// .............................
 				// USER SETTINGS - DIRECTLY
