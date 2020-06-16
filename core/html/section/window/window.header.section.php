@@ -1,4 +1,4 @@
-<nav id="h[[id]]" style="cursor: move;" class="navbar navbar-light bg-light justify-content-between">
+<nav id="h[[id]]" style="cursor: move;" class="navbar navbar-light justify-content-between">
   [[property]]
   <div class="btn-group" role="group">
   <button id='min[[id]]' style="font-size:10px" class="btn btn-light"><i class='fa fa-window-minimize'></i></button>

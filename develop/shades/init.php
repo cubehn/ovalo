@@ -54,19 +54,21 @@ $sec2->style->bg_color(color::name('white'));
 $sec2->embed()->script('El comando git fetch comunica con un repositorio remoto y obtiene toda la información que se encuentra en ese repositorio que no está en el tuyo actual y la almacena en tu base de datos local.
 En primer lugar, observamos este comando en Traer y Combinar Remotos y seguimos viendo ejemplos de su uso en Ramas Remotas.');
 $sec2->width(6);
-$sec2->style->shadow();
-$sec2->style->border_radius(0);
-$sec2->style->line_header(0);
-$sec2->style->bg_color_header(color::hexa('FFFFFF'));
-$sec2->event->click('cerrar','close');
+//$sec2->style->shadow();
+//$sec2->style->border_radius(0);
+//$sec2->style->line_header(0);
+//$sec2->style->bg_color_header(color::hexa('EEEEEE'));
+$sec2->event->click('cerrar','close'); // max, min y close-> estos son los botones del modo window
 
-$sec3->properties->type=MODAL;
+$sec3->properties->type=WIN;
 $sec3->properties->header='Section Modal';
 $sec3->properties->title='sec3';
 $sec3->properties->debug=0;
+$sec3->style->bg_color(color::name('silver'));
 $sec3->embed()->script('El comando git pull es básicamente una combinación de los comandos git fetch y git merge, donde Git descargará desde el repositorio remoto especificado y a continuación, de forma inmediata intentará combinarlo en la rama en la que te encuentres.');
 $sec3->style->justify_footer();
-$sec3->style->line_header(0);
+$sec3->style->line_header(1,color::name('gray'));
+$sec3->width(6);
 
 
 $sec4->properties->title='sec4';
@@ -81,8 +83,8 @@ $sec1->addAction($act1);
 $sec2->addAction($act3);
 
 
-$sec1->addSection($sec2);
-$sec1->addSection($sec3);
+$shade->addSection($sec2);
+$shade->addSection($sec3);
 $sec1->addSection($sec4);
 
 $shade->addSection($sec1);
