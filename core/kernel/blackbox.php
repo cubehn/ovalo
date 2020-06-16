@@ -4,6 +4,49 @@
 
 <script type="text/javascript">
 
+var wmode = new Array('');
+function dragElement(elmnt){
+  wl=wmode.length;
+  wmode[wl]=elmnt;
+  var p1=0,p2=0,p3=0,p4=0;
+  if (document.getElementById("h"+elmnt.id.substr(4)))
+    document.getElementById("h"+elmnt.id.substr(4)).onmousedown = dragMouseDown;
+  else
+    elmnt.onmousedown = dragMouseDown;
+
+  function dragMouseDown(e){
+    e = e || window.event;
+    e.preventDefault();
+    p3 = e.clientX;
+    p4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    document.onmousemove = elementDrag;
+  }
+  function elementDrag(e){
+    e = e || window.event;
+    e.preventDefault();
+    p1 = p3 - e.clientX;
+    p2 = p4 - e.clientY;
+    p3 = e.clientX;
+    p4 = e.clientY;
+    elmnt.style.top = (elmnt.offsetTop - p2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - p1) + "px";
+	elmnt.style.zIndex=100;
+  }
+  function closeDragElement(){
+    document.onmouseup = null;
+    document.onmousemove = null;
+	for(i=1;i<wmode.length;i++){
+		wmode[i].style.zIndex=1;
+	}
+	elmnt.style.zIndex=100;
+  }
+}
+
+dragElement(document.getElementById("mainsec2"));
+dragElement(document.getElementById("mainsec3"));
+dragElement(document.getElementById("mainsec4"));
+
 function INIT(secs){
 	s=secs.split(',');
 	for(i=0;i<s.length;i++){

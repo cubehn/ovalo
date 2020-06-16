@@ -61,7 +61,7 @@ $sec2->width(6);
 $sec2->event->click('cerrar','close'); // max, min y close-> estos son los botones del modo window
 
 $sec3->properties->type=WIN;
-$sec3->properties->header='Section Modal';
+$sec3->properties->header='Section Windows';
 $sec3->properties->title='sec3';
 $sec3->properties->debug=0;
 $sec3->style->bg_color(color::name('silver'));
@@ -70,11 +70,13 @@ $sec3->style->justify_footer();
 $sec3->style->line_header(1,color::name('gray'));
 $sec3->width(6);
 
-
+$sec4->properties->type=WIN;
+$sec4->properties->header='Prueba con Multiples Ventanas';
 $sec4->properties->title='sec4';
 $sec4->properties->debug=0;
 $sec4->embed()->script('Por último, mencionamos muy rápidamente que se puede utilizar la opción --verify-signatures con el fin de verificar qué commits que estás descargando han sido firmados con GPG en Firmando Commits.');
-
+$sec4->width(6);
+$sec4->style->bg_color(color::rgba(200,135,29));
 
 //--------------------------------------------------------------
 //ESTRUCTURA, ASOCIACIONES
@@ -85,7 +87,7 @@ $sec2->addAction($act3);
 
 $shade->addSection($sec2);
 $shade->addSection($sec3);
-$sec1->addSection($sec4);
+$shade->addSection($sec4);
 
 $shade->addSection($sec1);
 
