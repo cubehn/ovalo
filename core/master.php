@@ -278,7 +278,7 @@ class Shade{
 		$ev = '';
 		if($is->getEventsObjects()<>''){
 			foreach ($is->getEventsObjects() as $eo) { // por cada section dentro del shade
-				$ev = $ev.$this->eventsPrepare($eo,$s->g_name());
+				$ev = $ev.$this->eventsPrepare($eo,$is->g_name());
 				foreach ($is->getActions() as $eo2) { // por cada action dentro del section
 					foreach ($eo2->getEventsObjects() as $eo3) { //por cada event de cada action
 						$ev = $ev.$this->eventsPrepare($eo3,$eo2->g_name());

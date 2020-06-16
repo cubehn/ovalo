@@ -58,6 +58,7 @@ $sec2->style->shadow();
 $sec2->style->border_radius(0);
 $sec2->style->line_header(0);
 $sec2->style->bg_color_header(color::hexa('FFFFFF'));
+$sec2->event->click('cerrar','close');
 
 $sec3->properties->type=MODAL;
 $sec3->properties->header='Section Modal';
