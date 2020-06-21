@@ -15,6 +15,10 @@ function dragElement(elmnt){
     elmnt.onmousedown = dragMouseDown;
 
   function dragMouseDown(e){
+	for(i=1;i<wmode.length;i++){
+		wmode[i].style.zIndex=5;
+	}
+	elmnt.style.zIndex=100;
     e = e || window.event;
     e.preventDefault();
     p3 = e.clientX;
@@ -36,10 +40,6 @@ function dragElement(elmnt){
   function closeDragElement(){
     document.onmouseup = null;
     document.onmousemove = null;
-	for(i=1;i<wmode.length;i++){
-		wmode[i].style.zIndex=1;
-	}
-	elmnt.style.zIndex=100;
   }
 }
 

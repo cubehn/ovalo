@@ -71,8 +71,8 @@ if(config::$parameters['DebugMode'])
 
 <script>
 // todo section en modo window debe inicializar esta sentencia
-dragElement(document.getElementById("mainsec2"));
-dragElement(document.getElementById("mainsec3"));
+//dragElement(document.getElementById("mainsec2"));
+//dragElement(document.getElementById("mainsec3"));
 
 
 

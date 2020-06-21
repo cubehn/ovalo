@@ -334,7 +334,9 @@ class Shade{
 				//del section externo
 				$ev=$ev.$this->extractEvents($s);
 
-
+				if($s->g_type()=='window'){
+					$ev=$ev.' dragElement(document.getElementById("main'.$s->g_name().'"));';
+				}
 			}
 			$init_secs=substr($init_secs,1);		
 		}
