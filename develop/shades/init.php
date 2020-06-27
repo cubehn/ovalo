@@ -59,6 +59,7 @@ $sec2->width(6);
 //$sec2->style->line_header(0);
 //$sec2->style->bg_color_header(color::hexa('EEEEEE'));
 $sec2->event->click('cerrar','close'); // max, min y close-> estos son los botones del modo window
+$sec2->event->click('maximizar','max');
 
 $sec3->properties->type=WIN;
 $sec3->properties->header='Section Windows';

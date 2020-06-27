@@ -252,6 +252,22 @@ function exec_process2(n,p,cap=''){
 						case 'IPR009':
 							//document.getElementById("ala"+fields[0]).innerHTML=fields[2];
 							break;
+						case 'IPR010':
+							document.getElementById("main"+fields[0]).style.top=fields[2];
+							break;
+						case 'IPR011':
+							document.getElementById("main"+fields[0]).style.left=fields[2];
+							break;
+						case 'IPR012':
+							w=fields[2];
+							if(w==-1) w=$(window).width();
+							document.getElementById("cont"+fields[0]).style.width=w+'px';
+							break;
+						case 'IPR013':
+							h=fields[2];
+							if(h==-1) h=$(window).height();
+							document.getElementById("cont"+fields[0]).style.height=h+'px';
+							break;
 						case 'SEV001':
 							setTimeout(function(){bbprocess('exec_process2:'+fields[0]+'|','eventObjs','encabez');},fields[2]);
 							break;

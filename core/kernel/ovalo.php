@@ -400,6 +400,14 @@ class isec
 		if(isset($this->properties->error))
 		$ps = $ps.$this->section_name.';IPR009;'.$this->properties->error.'|';
 
+		if(isset($this->top))
+		$ps = $ps.$this->section_name.';IPR010;'.$this->top.'|';
+		if(isset($this->left))
+		$ps = $ps.$this->section_name.';IPR011;'.$this->left.'|';
+		if(isset($this->size_width))
+		$ps = $ps.$this->section_name.';IPR012;'.$this->size_width.'|';
+		if(isset($this->size_height))
+		$ps = $ps.$this->section_name.';IPR013;'.$this->size_height.'|';
 		if(isset($this->width))
 		$ps = $ps.$this->section_name.';IPR004;'.$this->width.'|';
 		if(isset($this->height))
@@ -449,6 +457,14 @@ class isec
 		$_SESSION['ovsec'][$this->section_name]['height']=$h;
 		$n=(100/12)*$h;
 		$this->height=$n.'%';
+	}
+	function size($width,$height){
+		$this->size_width=$width;
+		$this->size_height=$height;
+	}
+	function position($top=0,$left=0){
+		$this->top=$top;
+		$this->left=$left;
 	}
 	function hide($active=1){
 		$_SESSION['ovsec'][$this->section_name]['hide']=$active;

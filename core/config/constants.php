@@ -38,7 +38,7 @@ define("FOOTER",'f');
 define("HEADER",'h');
 define("BODY",'b');
 
-
+define("max",-1); // se usa en la funcion position de ovalo por ejemplo
 
 define("PUBLIC_SHADE",0);
 define("PRIVATE_SHADE",1);
